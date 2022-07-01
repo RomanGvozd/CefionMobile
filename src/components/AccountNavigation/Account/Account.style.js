@@ -95,7 +95,7 @@ export const Style = {
         height: 92,
     },
     radioButtonWrapper: {
-        width: 137,
+        width: "auto",
         height: 36,
         borderRadius: 54,
     },
@@ -277,30 +277,30 @@ export const Style = {
     },
     slideTitleDark: {
         fontSize: 20,
-        fotnWeight: "bolt",
         color: "#fff",
     },
     slideTitleLight: {
         fontSize: 20,
-        fotnWeight: "bolt",
         color: "#000",
     },
     slideDescriptionDark: {
+        width: "80%",
         fontSize: 13,
         color: "#fff",
-        marginTop: 8,
+        marginTop: 5,
 
     },
     slideDescriptionLight: {
+        width: "80%",
         fontSize: 13,
         color: "#000",
-        marginTop: 8,
+        marginTop: 5,
 
     },
     slideText: {
         fontSize: 13,
         color: "#2E9C3E",
-        marginTop: 13,
+        marginTop: 10,
 
     },
     
@@ -337,7 +337,9 @@ export const Style = {
         borderColor: "#D6D6D6",
         marginTop: 20,
         marginBottom: 100,
-
+        flexDirection: "row",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
     },
     navButton: {
         width: "48%",

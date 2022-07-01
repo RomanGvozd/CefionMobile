@@ -1,40 +1,83 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useSelector} from "react-redux";
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { CardStyleInterpolators, createStackNavigator, } from '@react-navigation/stack';
 
 import Account from './Account/Account'
 import Statistics from './Statistics/Statistics'
 import Setting from './Setting/Setting';
+import Followers from './Followers/Followers';
+import Following from './Following/Following';
 
-const Stack = createNativeStackNavigator();
+import News from './News/News';
+import Page from './News/Page/Page';
 
-const AccountNavigation = () => {
+import GroupList from './GroupList/GroupList';
+import GroupCreate from './GroupList/GroupCreate/GroupCreate';
+import GroupChat from './GroupList/GroupChat/GroupChat';
+import GroupChatSetting from './GroupList/GroupChat/GroupChatSetting/GroupChatSetting';
+import GroupChatEdit from './GroupList/GroupChat/GroupChatSetting/GroupChatEdit/GroupChatEdit';
+
+import Wallet from './Wallet/Wallet';
+import Everscape from './Wallet/Everscape/Everscape';
+import BinanceCoin from './BinanceCoin/BinanceCoin';
+
+const Stack = createStackNavigator();
+
+const AccountNavigation = ({setLogin}) => {
   const theme = useSelector((store) => store.theme.theme);
 
-  let backgroundColor = '#1C1C1E'
-
-  if(theme === "light"){
-    backgroundColor = '#fff'
-  }
-
-  let headerTintColor = '#fff'
-
-  if(theme === "light"){
-    headerTintColor = '#000'
-  }
+  const [pageID, setPageID] = useState('')
+  const [groupID, setGroupID] = useState('')
 
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          headerShown: false
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          gestureEnabled: true
         }}
       >
-        <Stack.Screen name="Account" component={Account} />
+        <Stack.Screen name="Account">
+          {props => <Account {...props} setPageID={setPageID} />}
+        </Stack.Screen>
         <Stack.Screen name="Statistics" component={Statistics} />
-        <Stack.Screen name="Setting" component={Setting} />
-
+        <Stack.Screen name="Setting">
+          {props => <Setting {...props} setLogin={setLogin} />}
+        </Stack.Screen>
+        <Stack.Screen name="Followers" component={Followers} />
+        <Stack.Screen name="Following" component={Following} />
+        <Stack.Screen name="News">
+          {props => <News {...props} setPageID={setPageID} />}
+        </Stack.Screen>
+        <Stack.Screen name="Page">
+          {props => <Page {...props} pageID={pageID} />}
+        </Stack.Screen>
+        <Stack.Screen name="GroupList">
+          {props => <GroupList {...props} setGroupID={setGroupID} />}
+        </Stack.Screen>
+        <Stack.Screen name="GroupCreate">
+          {props => <GroupCreate {...props} groupID={groupID} />}
+        </Stack.Screen>
+        <Stack.Screen name="GroupChat">
+          {props => <GroupChat {...props} groupID={groupID} />}
+        </Stack.Screen>
+        <Stack.Screen name="GroupChatSetting">
+          {props => <GroupChatSetting {...props} groupID={groupID}/>}
+        </Stack.Screen>
+        <Stack.Screen name="GroupChatEdit">
+          {props => <GroupChatEdit {...props} groupID={groupID}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Wallet">
+          {props => <Wallet {...props}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Everscape">
+          {props => <Everscape {...props}/>}
+        </Stack.Screen>
+        <Stack.Screen name="BinanceCoin">
+          {props => <BinanceCoin {...props}/>}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

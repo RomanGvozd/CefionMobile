@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Provider} from 'react-redux';
+import { Provider } from "react-redux";
 import { store } from './src/common/store/store';
 
 import Hello from './src/components/Hello/Hello';
@@ -7,19 +7,17 @@ import Login from './src/components/Login/Login';
 import Presentation from './src/components/Presentation/Presentation';
 import SignUp from './src/components/SignUp/SignUp';
 
-import NavFooter from './src/components/NavFooter/NavFooter';
 import Search from './src/components/Search/Search';
 import Calendar from './src/components/Calendar/Calendar';
-import Message from './src/components/Message/Message';
 
 import AccountNavigation from './src/components/AccountNavigation/AccountNavigation';
-
+import MessageNavigation from './src/components/MessageNavigation/MessageNavigation';
+import CalendarNavigation from './src/components/CalendarNavigation/CalendarNavigation';
 
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { NativeRouter, Routes, Route} from "react-router-native";
 
 const App = () => {
-
   const [login, setLogin] = useState(true)
 
   const [showHello, setShowHello] = useState(true)
@@ -34,12 +32,12 @@ const App = () => {
         <SafeAreaView style={{flex: 1, position: "relative"}}>
           <NativeRouter>
           <Routes>
-            <Route path="/" element={<AccountNavigation/>} />
+            <Route path="/" element={<AccountNavigation setLogin={setLogin}/>} />
             <Route path="/search" element={<Search/>} />
-            <Route path="/calendar" element={<Calendar/>} />
-            <Route path="/message" element={<Message/>} />
+            <Route path="/calendar" element={<CalendarNavigation/>} />
+            <Route path="/message" element={<MessageNavigation/>} />
           </Routes>
-          <NavFooter/>
+          
           </NativeRouter>
         </SafeAreaView>
 

@@ -1,19 +1,44 @@
 import React, {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import { ScrollView, SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { ScrollView, Switch, Text, View, Image, TouchableOpacity } from 'react-native';
 
 import { changeLanguage } from "../../../common/store/language/actions";
 import { content } from "./Settilng.config";
 
 import { Style } from "./Setting.style";
+import { GlobalStyle } from "../../../../global.style";
 
-const Setting = ({ navigation }) => {
+const Setting = ({setLogin, navigation }) => {
     const user = useSelector((store) => store.user);
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
     const dispatch = useDispatch();
 
-    const {Setting, English, Language, EnglishSelect, RussianSelect, InfoAndSettings} = content[language]
+    const {
+        Setting, 
+        English, 
+        Language, 
+        EnglishSelect, 
+        RussianSelect, 
+        InfoAndSettings, 
+        name, 
+        username, 
+        Security,
+        Email,
+        PhoneNumber,
+        Password,
+        TwoFactorAuthentication,
+        SecurityScreen,
+        SeedPhrase,
+        Show,
+        Privacy,
+        HideSubscribers,
+        HideSubscriptions,
+        HideWallet,
+        HideWalletAdress,
+        HideStatistics,
+        Logout,
+    } = content[language]
 
     const [showLanguage, setShowLanguage] = useState(false);
 
@@ -27,20 +52,30 @@ const Setting = ({ navigation }) => {
         dispatch(changeLanguage("RU"))
     }
 
+    const [twoFactorAuthentication, setTwoFactorAuthentication] = useState(false);
+    const [securityScreen, setSecurityScreen] = useState(false);
+
+    const [hideSubscribers, setHideSubscribers] = useState(false);
+    const [hideSubscriptions, setHideSubscriptions] = useState(false);
+    const [hideWallet, setHideWallet] = useState(false);
+    const [hideWalletAdress, setHideWalletAdress] = useState(false);
+    const [hideStatistics, setHideStatistics] = useState(false);
+
     return(
-        <ScrollView style={theme === "dark" ? Style.mainDark : Style.mainLight}>
+        <>
+        <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 
 
-            <TouchableOpacity style={theme === "dark" ? Style.headerDark : Style.headerLight} onPress={() => navigation.navigate({ name: 'Account' })}>
+            <TouchableOpacity style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight} onPress={() => navigation.navigate({ name: 'Account' })}>
                 <View 
-                style={Style.imageWrapper}
+                style={GlobalStyle.imageWrapper}
                 >
                     <Image
-                        style={Style.image}
+                        style={GlobalStyle.image}
                         source={require("./image/Vector.png")}
                     />
                 </View>
-                <Text style={theme === "dark" ? Style.headerTitleDark : Style.headerTitleLight}>
+                <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                     {Setting}
                 </Text>
             </TouchableOpacity>
@@ -49,7 +84,7 @@ const Setting = ({ navigation }) => {
             <View style={{padding: 20}}>
 
 
-                <View style={theme === "dark" ? Style.blockDark : Style.titleLight}>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.titleLight}>
                     <Image
                         style={Style.imageUser}
                         source={require("./image/user.png")}
@@ -57,15 +92,15 @@ const Setting = ({ navigation }) => {
                 </View>
 
 
-                <Text style={theme === "dark" ? Style.titleDark : Style.blockLight}>
+                <Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>
                     {Language}
                 </Text>
                 <View 
-                    style={theme === "dark" ? Style.blockDark : Style.blockLight}
+                    style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}
                     
                 >
-                    <TouchableOpacity style={Style.blockItemOne} onPress={()=>setShowLanguage(!showLanguage)}>
-                        <Text style={theme === "dark" ? Style.textDark : Style.textLight}>
+                    <TouchableOpacity style={GlobalStyle.blockItemOne} onPress={()=>setShowLanguage(!showLanguage)}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                             {English}
                         </Text>
                         <Image
@@ -77,7 +112,7 @@ const Setting = ({ navigation }) => {
                     <>
                         <TouchableOpacity style={Style.select}>
                             <Text 
-                                style={theme === "dark" ? Style.textDark : Style.textLight}
+                                style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}
                                 onPress={handleEnglish}
                             >
                                 {EnglishSelect}
@@ -85,7 +120,7 @@ const Setting = ({ navigation }) => {
                         </TouchableOpacity>
                         <TouchableOpacity style={Style.select}>
                             <Text 
-                                style={theme === "dark" ? Style.textDark : Style.textLight}
+                                style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}
                                 onPress={handleRussian}
                             >
                                 {RussianSelect}
@@ -95,14 +130,198 @@ const Setting = ({ navigation }) => {
                 </View>
 
 
-                <Text style={theme === "dark" ? Style.titleDark : Style.blockLight}>
+                <Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>
                     {InfoAndSettings}
                 </Text>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                        {user.name}
+                    </Text>
+                    <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                        {name}
+                    </Text>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                        {user.tagName}
+                    </Text>
+                    <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                        {username}
+                    </Text>
+                </View>
 
 
+                <Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>
+                    {Security}
+                </Text>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                        nvt.isst.nute@gmail.com
+                    </Text>
+                    <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                        {Email}
+                    </Text>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                        (207) 555-0119
+                    </Text>
+                    <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                        {PhoneNumber}
+                    </Text>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                        ************
+                    </Text>
+                    <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                        {Password}
+                    </Text>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {TwoFactorAuthentication}
+                        </Text>
+                        <Switch
+                            
+                            trackColor={{ false: "rgba(255, 255, 255, 0.15)", true: "#2E9C3E" }}
+                            thumbColor={hideSubscribers ? "#fff" : "#fff"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={() => setTwoFactorAuthentication(previousState => !previousState)}
+                            value={twoFactorAuthentication}
+                            style={{ transform: [{ scale: 1.3 }] }}
+                        />
+                    </View>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {SecurityScreen}
+                        </Text>
+                        <Switch
+                            
+                            trackColor={{ false: "rgba(255, 255, 255, 0.15)", true: "#2E9C3E" }}
+                            thumbColor={hideSubscribers ? "#fff" : "#fff"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={() => setSecurityScreen(previousState => !previousState)}
+                            value={securityScreen}
+                            style={{ transform: [{ scale: 1.3 }] }}
+                        />
+                    </View>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {SeedPhrase}
+                        </Text>
+                        <TouchableOpacity style={Style.showButton}>
+                            <Text style={Style.showButtonText}>
+                                {Show}
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+
+
+                <Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>
+                    {Privacy}
+                </Text>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {HideSubscribers}
+                        </Text>
+                        <Switch
+                            
+                            trackColor={{ false: "rgba(255, 255, 255, 0.15)", true: "#2E9C3E" }}
+                            thumbColor={hideSubscribers ? "#fff" : "#fff"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={() => setHideSubscribers(previousState => !previousState)}
+                            value={hideSubscribers}
+                            style={{ transform: [{ scale: 1.3 }] }}
+                        />
+                    </View>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {HideSubscriptions}
+                        </Text>
+                        <Switch
+                            
+                            trackColor={{ false: "rgba(255, 255, 255, 0.15)", true: "#2E9C3E" }}
+                            thumbColor={hideSubscriptions ? "#fff" : "#fff"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={() => setHideSubscriptions(previousState => !previousState)}
+                            value={hideSubscriptions}
+                            style={{ transform: [{ scale: 1.3 }] }}
+                        />
+                    </View>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {HideWallet}
+                        </Text>
+                        <Switch
+                            
+                            trackColor={{ false: "rgba(255, 255, 255, 0.15)", true: "#2E9C3E" }}
+                            thumbColor={hideWallet ? "#fff" : "#fff"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={() => setHideWallet(previousState => !previousState)}
+                            value={hideWallet}
+                            style={{ transform: [{ scale: 1.3 }] }}
+                        />
+                    </View>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {HideWalletAdress}
+                        </Text>
+                        <Switch
+                            
+                            trackColor={{ false: "rgba(255, 255, 255, 0.15)", true: "#2E9C3E" }}
+                            thumbColor={hideWalletAdress ? "#fff" : "#fff"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={() => setHideWalletAdress(previousState => !previousState)}
+                            value={hideWalletAdress}
+                            style={{ transform: [{ scale: 1.3 }] }}
+                        />
+                    </View>
+                </View>
+                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                    <View style={GlobalStyle.blockItemOne}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {HideStatistics}
+                        </Text>
+                        <Switch
+                            
+                            trackColor={{ false: "rgba(255, 255, 255, 0.15)", true: "#2E9C3E" }}
+                            thumbColor={hideStatistics ? "#fff" : "#fff"}
+                            ios_backgroundColor="#3e3e3e"
+                            onValueChange={() => setHideStatistics(previousState => !previousState)}
+                            value={hideStatistics}
+                            style={{ transform: [{ scale: 1.3 }] }}
+                        />
+                    </View>
+                </View>
+
+                <View style={{padding: 40}}>
+
+                </View>
             </View>
-
         </ScrollView>
+        <View style={theme === "dark" ? Style.footerDark : Style.footerLight}>
+            <TouchableOpacity style={Style.logoutButton} onPress={()=>setLogin(false)}>
+                <Text style={Style.logoutButtonText}>
+                    {Logout}
+                </Text>
+            </TouchableOpacity>
+        </View>
+        </>
     )
 }
 

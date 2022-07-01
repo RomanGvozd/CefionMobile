@@ -11,39 +11,39 @@ const NavFooter = () => {
 
     return(
         <View style={theme === "dark" ? Style.footerDark : Style.footerLight}>
-            
-            <TouchableOpacity style={pathname === "/" ? Style.footerButtonActive : Style.footerButton}>
-                <Link to="/">
+
+            <Link to="/" style={Style.footerItem}>
+                <View style={pathname === "/" ? Style.footerButtonActive : Style.footerButton}>
                     <Image
-                        style={Style.Image}
+                        style={Style.image}
                         source={require("./image/account.png")}
                     />
-                </Link>
-            </TouchableOpacity> 
-            <TouchableOpacity style={pathname === "/search" ? Style.footerButtonActive : Style.footerButton}>
-                <Link to="/search">
+                </View>
+            </Link>
+            <Link to="/search" style={Style.footerItem}>
+                <View style={pathname === "/search" ? Style.footerButtonActive : Style.footerButton}>
                     <Image
-                        style={Style.Image}
+                        style={Style.image}
                         source={require("./image/search.png")}
                     />
-                </Link>
-            </TouchableOpacity>
-            <TouchableOpacity style={pathname === "/calendar" ? Style.footerButtonActive : Style.footerButton}>
-                <Link to="/calendar">
+                </View>
+            </Link>
+            <Link to="/calendar" style={Style.footerItem}>
+                <View style={pathname === "/calendar" ? Style.footerButtonActive : Style.footerButton}>              
                     <Image
-                        style={Style.Image}
+                        style={Style.image}
                         source={require("./image/calendar.png")}
                     />
-                </Link>
-            </TouchableOpacity>
-            <TouchableOpacity style={pathname === "/message" ? Style.footerButtonActive : Style.footerButton}>
-                <Link to="/message">
+                </View>
+            </Link>
+            <Link to="/message" style={Style.footerItem}>
+                <View style={pathname === "/message" ? Style.footerButtonActive : Style.footerButton}>
                     <Image
-                        style={Style.Image}
+                        style={Style.image}
                         source={require("./image/chat.png")}
                     />
-                </Link>
-            </TouchableOpacity>
+                </View>
+            </Link>
         </View>
     )
 }

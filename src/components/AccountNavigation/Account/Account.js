@@ -3,13 +3,18 @@ import {useDispatch, useSelector} from "react-redux";
 import { ScrollView, SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper'
 import { popularNews } from "./PopularNews.array";
+import { content } from "./Account.config";
 
 import { Style } from "./Account.style";
+import { GlobalStyle } from "../../../../global.style";
+
+import NavFooter from "../../NavFooter/NavFooter";
 
 import { changeTheme } from "../../common/store/theme/actions";
 
-const Account = ({ navigation }) => {
+const Account = ({setPageID, navigation }) => {
 
+    const news = useSelector((store) => store.news);
     const user = useSelector((store) => store.user);
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
@@ -18,14 +23,37 @@ const Account = ({ navigation }) => {
     const handleTheme = () => {
         dispatch(changeTheme(theme === "dark" ? "light" : "dark"))
     }
+
+    const {
+        Light,
+        Dark,
+        Statistics,
+        Followers,
+        Following,
+        Wallet,
+        WalletAdress,
+        ReadMore,
+        Group,
+        FreeTON,
+        News,
+        Online,
+        PopularNews,
+    } = content[language]
+
+    const filteredNews = []
+
+    for (let i = 0; i < 4; i++) {
+        filteredNews.push(news[i]);
+        
+    }
     
     return(
-        <ScrollView style={theme === "dark" ? Style.mainDark : Style.mainLight}>
-
+        <>
+        <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 
 
             <TouchableOpacity 
-                style={theme === "dark" ? Style.headerDark : Style.headerLight}
+                style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight}
                 onPress={() => navigation.navigate({ name: 'Setting' })}
             >
                 <Text style={theme === "dark" ? Style.headerTitleDark : Style.headerTitleLight}>
@@ -54,10 +82,10 @@ const Account = ({ navigation }) => {
                         <TouchableOpacity onPress={handleTheme} style={Style.radioButtonWrapper}>
                             <View style={Style.radioButton}>
                                 <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                    Light
+                                    {Light}
                                 </Text>
                                 <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                    Dark
+                                    {Dark}
                                 </Text>
                                 <View style={theme === "dark" ? Style.radioButtonCheckedDark : Style.radioButtonCheckedLight}>
                                 </View>
@@ -78,7 +106,7 @@ const Account = ({ navigation }) => {
                                 source={require("./image/statisticIcon.png")}
                             />
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight}>
-                                Statistics
+                                {Statistics}
                             </Text>
                         </View>
                         <Image
@@ -90,58 +118,58 @@ const Account = ({ navigation }) => {
 
 
                 <View style={theme === "dark" ? Style.userInfoDark : Style.userInfoLight}>
-                    <View style={Style.infoItem}>
+                    <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Followers' })}>
                         <Image
                             source={require("./image/followers.png")}
                         />
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                Followers
+                                {Followers}
                             </Text>
                             <Text style={theme === "dark" ? Style.userInfoTextDark : Style.userInfoTextLight }>
                                 994
                             </Text>
                         </View>
-                    </View>
-                    <View style={Style.infoItem}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Following' })}>
                         <Image
                             source={require("./image/followers.png")}
                         />
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                Following
+                                {Following}
                             </Text>
                             <Text style={theme === "dark" ? Style.userInfoTextDark : Style.userInfoTextLight }>
                                 703
                             </Text>
                         </View>
-                    </View>
-                    <View style={Style.infoItem}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Wallet' })}>
                         <Image
                             source={require("./image/wallet.png")}
                         />
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                Wallet
+                                {Wallet}
                             </Text>
                             <Text style={theme === "dark" ? Style.userInfoTextDark : Style.userInfoTextLight }>
                                 45,832.0012382 USDT
                             </Text>
                         </View>
-                    </View>
-                    <View style={Style.infoItem}>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Everscape' })}>
                         <Image
                             source={require("./image/wallet.png")}
                         />
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                Wallet adress
+                                {WalletAdress}
                             </Text>
                             <Text style={theme === "dark" ? Style.userInfoTextDark : Style.userInfoTextLight }>
                                 19TLq3QwdaJRtk4aJn87uaV8jLuZAv4B19
                             </Text>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 </View>
 
 
@@ -158,21 +186,34 @@ const Account = ({ navigation }) => {
                             </View>
                         }
                     >
-                        {popularNews.map((item)=>(
-                            <View style={Style.slide} key={item.id}>
+                        {filteredNews.map((item)=>(
+                            <TouchableOpacity 
+                                style={Style.slide} 
+                                key={item.id}
+                                onPress={()=>{
+                                    setPageID(item.id)
+                                    navigation.navigate({ name: 'Page' })
+                                }}
+                            >
                                 <Image
                                     source={require("./image/popularNews.png")}
                                 />
                                 <View style={Style.slideInfo}>
                                     <Text style={theme === "dark" ? Style.slideTitleDark : Style.slideTitleLight}>
+                                        {PopularNews}
+                                    </Text>
+                                    {language === "EN"
+                                    ?<Text style={theme === "dark" ? Style.slideDescriptionDark : Style.slideDescriptionLight}>
                                         {item.titleEN}
                                     </Text>
-                                    <Text style={theme === "dark" ? Style.slideDescriptionDark : Style.slideDescriptionLight}>
-                                        {item.descriptionEN}
+                                    :<Text style={theme === "dark" ? Style.slideDescriptionDark : Style.slideDescriptionLight}>
+                                        {item.titleRU}
                                     </Text>
-                                    <Text style={Style.slideText}>Read more</Text>
+                                    }
+
+                                    <Text style={Style.slideText}>{ReadMore}</Text>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         ))}
                     </Swiper>
                 </View>
@@ -180,33 +221,42 @@ const Account = ({ navigation }) => {
 
 
                 <View style={theme === "dark" ? Style.navDark : Style.navLight}>
-                    <TouchableOpacity style={Style.navButton}>
+                    <TouchableOpacity 
+                        style={Style.navButton}
+                        onPress={() => navigation.navigate({ name: 'GroupList' })}
+                    >
                         <Image
                             style={Style.navButtonImage}
                             source={require("./image/navGroup.png")}
                         />
                         <View style={Style.navButtonInfo}>
-                            <Text style={Style.navButtonText}>Group</Text>
-                            <Text style={Style.navButtonSubText}>Free TON</Text>
+                            <Text style={Style.navButtonText}>{Group}</Text>
+                            <Text style={Style.navButtonSubText}>{FreeTON}</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={Style.navButton}>
+                    <TouchableOpacity 
+                        style={Style.navButton} 
+                        onPress={() => navigation.navigate({ name: 'News' })}
+                    >
                         <Image
                             style={Style.navButtonImage}
                             source={require("./image/navGroup.png")}
                         />
                         <View style={Style.navButtonInfo}>
-                            <Text style={Style.navButtonText}>News</Text>
-                            <Text style={Style.navButtonSubText}>Online</Text>
+                            <Text style={Style.navButtonText}>{News}</Text>
+                            <Text style={Style.navButtonSubText}>{Online}</Text>
                         </View>
                     </TouchableOpacity>
-                    <TouchableOpacity style={Style.navButton}>
+                    <TouchableOpacity 
+                        style={Style.navButton}
+                        onPress={() => navigation.navigate({ name: 'BinanceCoin' })}
+                    >
                         <Image
                             style={Style.navButtonImage}
                             source={require("./image/navGroup.png")}
                         />
                         <View style={Style.navButtonInfo}>
-                            <Text style={Style.navButtonText}>Wallet</Text>
+                            <Text style={Style.navButtonText}>{Wallet}</Text>
                         </View>
                     </TouchableOpacity>
 
@@ -216,6 +266,8 @@ const Account = ({ navigation }) => {
 
             </View>
         </ScrollView>
+        <NavFooter/>
+        </>
     )
 }
 

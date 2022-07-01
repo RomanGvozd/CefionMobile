@@ -7,10 +7,6 @@ export const Style = {
         backgroundColor: '#1C1C1E',
         borderTopWidth: 1,
         borderTopColor: "#424246",
-        paddingLeft: 30,
-        paddingRight: 30,
-        paddingTop: 10,
-        paddingBottom: 10,
         flexDirection: "row",
         justifyContent: "space-between",
         
@@ -23,12 +19,17 @@ export const Style = {
         backgroundColor: '#fff',
         borderTopWidth: 1,
         borderTopColor: "#D6D6D6",
-        paddingLeft: 30,
-        paddingRight: 30,
-        paddingTop: 10,
-        paddingBottom: 10,
         flexDirection: "row",
         justifyContent: "space-between",
+
+    },
+    footerItem: {
+        width: "25%",
+        height: "100%",
+        paddingTop: 10,
+        paddingBottom: 10,
+        justifyContent: "center",
+        alignItems: "center",
 
     },
     footerButton: {
