@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ScrollView, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { content } from "./BinanceCoin.config";
@@ -9,6 +9,7 @@ import { Style } from "./BinanceCoin.style";
 import BinanceCoinChart from "./BinanceCoinChart/BinanceCoinChart";
 import BinanceConverter from "./BinanceConverter/BinanceConverter";
 import BinanceStatistics from "./BinanceStatistics/BinanceStatistics";
+import BinanceCionMore from "./BinanceCionMore/BinanceCionMore";
 
 const BinanceCoin = ({navigation}) => {
     const theme = useSelector((store) => store.theme.theme);
@@ -16,10 +17,20 @@ const BinanceCoin = ({navigation}) => {
 
     const {
         MoreStats,
+        LessStats,
     } = content[language]
 
+    const scrollViewRef = useRef();
+
+    const [showBinance, setShowBinance] = useState(false)
+    const [show, setShow] = useState(false)
+
     return(
-        <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
+        <ScrollView 
+            style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}
+            ref={scrollViewRef}
+            onContentSizeChange={show && scrollViewRef.current.scrollToEnd({ animated: true })}
+        >
 
 
             <TouchableOpacity 
@@ -31,7 +42,7 @@ const BinanceCoin = ({navigation}) => {
                 >
                     <Image
                         style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
+                        source={require("../../../Image/BackArrow.png")}
                     />
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
@@ -99,11 +110,24 @@ const BinanceCoin = ({navigation}) => {
                         <View style={theme === "dark" ? Style.lineTrackDark : Style.lineTrackLight}>
                         </View>
                     </View>
+
                     <View style={{padding: 10}}></View>
-                    <TouchableOpacity style={Style.buttonMore}>
-                        <Text style={Style.buttonMoreText}>
+
+                    {showBinance && <BinanceCionMore />}
+                    
+                    <TouchableOpacity 
+                        style={Style.buttonMore}
+                        onPress={()=>setShowBinance(!showBinance)}
+                    >
+                        {!showBinance 
+                        ?<Text style={Style.buttonMoreText}>
                             {MoreStats}
                         </Text>
+                        :<Text style={Style.buttonMoreText}>
+                            {LessStats}
+                        </Text>
+                        }
+
                     </TouchableOpacity>
                 </View>
 
@@ -111,7 +135,7 @@ const BinanceCoin = ({navigation}) => {
 
                 <BinanceConverter />
 
-                <BinanceStatistics />
+                <BinanceStatistics setShow={setShow} show={show}/>
                 
 
             </View>

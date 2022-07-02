@@ -29,7 +29,7 @@ const GroupList = ({setGroupID, navigation}) => {
                     >
                         <Image
                             style={GlobalStyle.image}
-                            source={require("./image/Vector.png")}
+                            source={require("../../../Image/BackArrow.png")}
                         />
                     </TouchableOpacity>
                     <View style={Style.titleWrapper}>
@@ -61,7 +61,7 @@ const GroupList = ({setGroupID, navigation}) => {
                 />
 
                 {groups.map((item)=>(
-                    <GroupListItem item={item} setGroupID={setGroupID} openChat={openChat}/>
+                    <GroupListItem key={item.id} item={item} setGroupID={setGroupID} openChat={openChat}/>
                 ))}
 
                 

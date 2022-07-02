@@ -2,17 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { STYLE } from '../../../styles';
 
-const Hello = ({setShowHello, setShowLogin, setShowPresentation}) => {
-
-    const openLogin = () => {
-        setShowHello(false)
-        setShowLogin(true)
-    }
-
-    const openPresentation = () => {
-        setShowHello(false)
-        setShowPresentation(true)
-    }
+const Hello = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.main}>
@@ -25,10 +15,10 @@ const Hello = ({setShowHello, setShowLogin, setShowPresentation}) => {
                 <Text style={{color: "#2E9C3E"}}>Hey!</Text> You already have an account with Cefion?
             </Text>
         </View>
-        <TouchableOpacity style={styles.buttonLogin} onPress={openLogin}>
+        <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate({ name: 'Login' })}>
             <Text style={styles.buttonLoginText}>login</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonSingup} onPress={openPresentation}>
+        <TouchableOpacity style={styles.buttonSingup} onPress={() => navigation.navigate({ name: 'Presentation' })}>
             <Text style={styles.buttonSingupText}>Sign Up</Text>
         </TouchableOpacity>
     </SafeAreaView>

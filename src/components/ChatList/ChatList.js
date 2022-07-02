@@ -48,7 +48,7 @@ const ChatList = ({setChatID, navigation}) => {
                     </View>
                     <TouchableOpacity 
                         style={Style.headerBlockRight}
-                        // onPress={() => navigation.navigate({ name: 'ChatSetting' })}
+                        onPress={() => navigation.navigate({ name: 'ChatNew' })}
                     >
                         <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                             {New}

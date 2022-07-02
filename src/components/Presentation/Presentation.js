@@ -2,21 +2,21 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, TouchableHighlight  } from 'react-native';
 import Swiper from 'react-native-swiper'
 
-const presentation = ({setShowHello, setShowPresentation, setShowSignUp}) => {
+const presentation = ({navigation}) => {
 
-  const openHello = () => {
-    setShowHello(true)
-    setShowPresentation(false)
-  }
+  // const openHello = () => {
+  //   setShowHello(true)
+  //   setShowPresentation(false)
+  // }
 
-  const openSignUp = () => {
-    setShowSignUp(true)
-    setShowPresentation(false)
-  }
+  // const openSignUp = () => {
+  //   setShowSignUp(true)
+  //   setShowPresentation(false)
+  // }
 
   return (
     <SafeAreaView style={styles.mainDark}>
-      <TouchableOpacity style={styles.header} onPress={openHello}>
+      <TouchableOpacity style={styles.header} onPress={() => navigation.navigate({ name: 'Hello' })}>
           <Image
             style={styles.image}
             source={require("./image/Vector.png")}
@@ -24,14 +24,8 @@ const presentation = ({setShowHello, setShowPresentation, setShowSignUp}) => {
       </TouchableOpacity>
       <Swiper
         loop={false}
-        dot={
-          <View style={styles.dot}>
-          </View>
-        }
-        activeDot={
-          <View style={styles.activeDot}>
-          </View>
-        }
+        dot={<View style={styles.dot}></View>}
+        activeDot={<View style={styles.activeDot}></View>}
       >
         <View style={styles.slide}>
           <Image
@@ -64,7 +58,7 @@ const presentation = ({setShowHello, setShowPresentation, setShowSignUp}) => {
             />
           <Text style={styles.text}>Your funds under protection!</Text>
           <Text style={styles.subtext}>Store your money in digital currencies.</Text>
-          <TouchableHighlight  style={styles.button} onPress={openSignUp}>
+          <TouchableHighlight  style={styles.button} onPress={() => navigation.navigate({ name: 'SignUp' })}>
             <Text style={styles.buttonText}>Okay</Text>
           </TouchableHighlight >
         </View>

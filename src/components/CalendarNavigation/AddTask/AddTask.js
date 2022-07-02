@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { SafeAreaView, ScrollView, Text, View, Image, TouchableOpacity, TextInput, Button } from 'react-native';
 import { content } from "./AddTask.config";
 import { Style } from "./AddTask.style";
+import moment from "moment";
 
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
@@ -23,9 +24,10 @@ const AddTask = ({navigation}) => {
 
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-    const handleConfirm = (date) => {
-        console.warn("A date has been picked: ", date);
-        setDatePickerVisibility(false)
+    const [show, showModal] = useState(false);
+
+    const handleDatePicked = date => {
+        console.log("A date has been picked: ", date);
     };
 
     return(
@@ -71,14 +73,13 @@ const AddTask = ({navigation}) => {
                     /> */}
                     <TouchableOpacity
                         style={theme === "dark" ? Style.inputDark : Style.inputLight}
-                        onPress={()=>setDatePickerVisibility(true)}
+                        onPress={() => showModal(!show)}
                     >
                     </TouchableOpacity>
                     <DateTimePickerModal
-                        isVisible={isDatePickerVisible}
-                        mode="date"
-                        onConfirm={handleConfirm}
-                        onCancel={()=>setDatePickerVisibility(false)}
+                        isVisible={show}
+                        onConfirm={handleDatePicked}
+                        onCancel={() => showModal(false)}
                     />
                     <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTextLight}>
                         {Description}

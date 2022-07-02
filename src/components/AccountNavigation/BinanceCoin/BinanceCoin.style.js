@@ -7,7 +7,7 @@ export const Style = {
         borderRadius: 28,
     },
 
-    //=================BlockDark=============
+    //=================ButtonDark=============
 
     ButtonDark: {
         backgroundColor: "#000",
@@ -68,6 +68,35 @@ export const Style = {
         color: "#000",
         
     },
+    
+    //===============Text=======================
+    
+    textDark: {
+        color: "#fff",
+        fontSize: 13,
+    },
+    textLight: {
+        color: "#000",
+        fontSize: 13,
+    },
+    subTextDark: {
+        color: "rgba(255, 255, 255, 0.5)",
+        fontSize: 10,
+    },
+    subTextLight: {
+        color: "rgba(0, 0, 0, 0.5)",
+        fontSize: 10,
+    },
+    textGreen: {
+        color: "#26D27C",
+        fontSize: 12,
+        
+    },
+    textRed: {
+        color: "#FB4F37",
+        fontSize: 12,
+
+    },
 
     //=================line====================
 
@@ -110,5 +139,26 @@ export const Style = {
         fontSize: 15,
         color: "#2E9C3E",
         textAlign: "center",
+    },
+
+    //===============Block=====================
+
+    blockDark: {
+        width: "100%",
+        height: "auto",
+        paddingTop: 14,
+        paddingBottom: 14,
+        borderBottomWidth: 1,
+        borderBottomColor: "#424246",
+        marginBottom: 20,
+    },
+    blockLight: {
+        width: "100%",
+        height: "auto",
+        paddingTop: 14,
+        paddingBottom: 14,
+        borderBottomWidth: 1,
+        borderBottomColor: "#D6D6D6",
+        marginBottom: 20,
     },
 }

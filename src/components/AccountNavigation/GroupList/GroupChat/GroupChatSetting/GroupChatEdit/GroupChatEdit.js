@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ScrollView, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { content } from "./GroupChatEdit.config";
+import RestrictionsModal from "./RestrictionsModal/RestrictionsModal";
 
 import { GlobalStyle } from "../../../../../../../global.style";
 import { Style } from "./GroupChatEdit.style";
@@ -28,7 +29,10 @@ const GroupChatEdit = ({groupID, navigation}) => {
     let group = groups.filter((item)=> item.id === groupID)
     group = group[0]
 
+    const [show, setShow] = useState(false)
+
     return(
+        <>
         <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 
 
@@ -104,7 +108,10 @@ const GroupChatEdit = ({groupID, navigation}) => {
                         />
                     </View>
                 </View>
-                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                <TouchableOpacity 
+                    style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}
+                    onPress={()=>setShow(true)}
+                >
                     <View style={GlobalStyle.blockItemOne}>
                         <View>
                             <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
@@ -119,7 +126,7 @@ const GroupChatEdit = ({groupID, navigation}) => {
                             source={require("./image/Vector.png")}
                         />
                     </View>
-                </View>
+                </TouchableOpacity>
                 <View style={GlobalStyle.blockItemOne}>
                     <View style={Style.addWalett}>
                         <View style={Style.addWalettBlock}>
@@ -141,7 +148,10 @@ const GroupChatEdit = ({groupID, navigation}) => {
                     </View>
                 </View>
                 <View style={{padding: 10}}></View>
-                <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
+                <TouchableOpacity 
+                    style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}
+                    onPress={() => navigation.navigate({ name: 'GroupAddTask' })}
+                >
                     <View style={GlobalStyle.blockItemOne}>
                         <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                             {AddEvent}
@@ -151,12 +161,14 @@ const GroupChatEdit = ({groupID, navigation}) => {
                             source={require("./image/Vector.png")}
                         />
                     </View>
-                </View>
+                </TouchableOpacity>
 
             </View>
 
 
         </ScrollView>
+        {show && <RestrictionsModal show={show} setShow={setShow}/>}
+        </>
     )
 }
 

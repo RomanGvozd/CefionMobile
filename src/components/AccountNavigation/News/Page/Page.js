@@ -13,7 +13,7 @@ const Page = ({pageID, navigation}) => {
 
     let news = newsPublish.filter((item)=> item.id === pageID)
     news = news[0]
-
+    
     return(
         <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 

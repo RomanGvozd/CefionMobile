@@ -73,36 +73,35 @@ const Account = ({setPageID, navigation }) => {
 
 
             <View style={{ padding: 20 }}>
-                <View style={Style.userBlockWrapper}>
-                    <View style={theme === "dark" ? Style.userBlockDark : Style.userBlockLight}>
-                        <Image
-                            style={Style.userImage}
-                            source={require("./image/user.png")}
-                        />
-                        <TouchableOpacity onPress={handleTheme} style={Style.radioButtonWrapper}>
-                            <View style={Style.radioButton}>
-                                <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                    {Light}
-                                </Text>
-                                <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
-                                    {Dark}
-                                </Text>
-                                <View style={theme === "dark" ? Style.radioButtonCheckedDark : Style.radioButtonCheckedLight}>
-                                </View>
+                <View style={theme === "dark" ? Style.userBlockDark : Style.userBlockLight}>
+                    <Image
+                        style={Style.userImage}
+                        source={require("./image/user.png")}
+                    />
+                    <TouchableOpacity onPress={handleTheme} style={Style.radioButtonWrapper}>
+                        <View style={Style.radioButton}>
+                            <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
+                                 {Light}
+                            </Text>
+                            <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
+                                {Dark}
+                            </Text>
+                            <View style={theme === "dark" ? Style.radioButtonCheckedDark : Style.radioButtonCheckedLight}>
                             </View>
-                        </TouchableOpacity>
-                    </View>
+                        </View>
+                    </TouchableOpacity>
                 </View>
 
 
 
                 <TouchableOpacity 
-                style={Style.statisticWrapper} 
-                onPress={() => navigation.navigate({ name: 'Statistics' })}
+                    style={Style.statisticWrapper} 
+                    onPress={() => navigation.navigate({ name: 'Statistics' })}
                 >
                     <View style={theme === "dark" ? Style.statisticDark : Style.statisticLight}>
                         <View style={{flexDirection: "row"}}>
                             <Image
+                                style={{width: 20, height: 20}}
                                 source={require("./image/statisticIcon.png")}
                             />
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight}>
@@ -110,6 +109,7 @@ const Account = ({setPageID, navigation }) => {
                             </Text>
                         </View>
                         <Image
+                            style={GlobalStyle.imageReverce}
                             source={require("./image/statisticArrow.png")}
                         />
                     </View>

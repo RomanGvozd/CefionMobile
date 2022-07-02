@@ -23,7 +23,7 @@ const Followers = ({ navigation }) => {
                 >
                     <Image
                         style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
+                        source={require("../../../Image/BackArrow.png")}
                     />
 
                 </View>

@@ -54,8 +54,8 @@ export const Style = {
         width: 20,
         height: 20,
         position: "absolute",
-        right: 22,
-        bottom: 11,
+        right: 20,
+        bottom: 7,
     },
 
     // ================BlockUser=========================

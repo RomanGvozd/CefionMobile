@@ -11,12 +11,14 @@ import Following from './Following/Following';
 
 import News from './News/News';
 import Page from './News/Page/Page';
+import NewsCreate from './News/NewsCreate/NewsCreate';
 
 import GroupList from './GroupList/GroupList';
 import GroupCreate from './GroupList/GroupCreate/GroupCreate';
 import GroupChat from './GroupList/GroupChat/GroupChat';
 import GroupChatSetting from './GroupList/GroupChat/GroupChatSetting/GroupChatSetting';
 import GroupChatEdit from './GroupList/GroupChat/GroupChatSetting/GroupChatEdit/GroupChatEdit';
+import GroupAddTask from './GroupList/GroupChat/GroupChatSetting/GroupChatEdit/AddTask/GroupAddTask';
 
 import Wallet from './Wallet/Wallet';
 import Everscape from './Wallet/Everscape/Everscape';
@@ -54,6 +56,9 @@ const AccountNavigation = ({setLogin}) => {
         <Stack.Screen name="Page">
           {props => <Page {...props} pageID={pageID} />}
         </Stack.Screen>
+        <Stack.Screen name="NewsCreate">
+          {props => <NewsCreate {...props} />}
+        </Stack.Screen>
         <Stack.Screen name="GroupList">
           {props => <GroupList {...props} setGroupID={setGroupID} />}
         </Stack.Screen>
@@ -68,6 +73,9 @@ const AccountNavigation = ({setLogin}) => {
         </Stack.Screen>
         <Stack.Screen name="GroupChatEdit">
           {props => <GroupChatEdit {...props} groupID={groupID}/>}
+        </Stack.Screen>
+        <Stack.Screen name="GroupAddTask">
+          {props => <GroupAddTask {...props} groupID={groupID}/>}
         </Stack.Screen>
         <Stack.Screen name="Wallet">
           {props => <Wallet {...props}/>}

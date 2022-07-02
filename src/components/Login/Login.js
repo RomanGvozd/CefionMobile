@@ -2,34 +2,43 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 
+import { accountLogin } from '../../common/api/auth.api';
+
 import { loginUser } from '../../common/store/user/actions';
 
-const Login = ({setShowHello, setShowLogin, setShowSignUp, setLogin}) => {
+const Login = ({navigation, setLogin}) => {
 
   const dispatch = useDispatch();
 
-  const openHello = () => {
-    setShowHello(true)
-    setShowLogin(false)
-  }
-
-  const openSignUp = () => {
-    setShowSignUp(true)
-    setShowLogin(false)
-  }
+  const [loading, setLoading] = useState(false);
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setLogin(true)
     dispatch(loginUser(username))
-  }
+    // setLoading(true)
+    // await accountLogin({username, password})
+    // .then((response) => {
+    //     dispatch(addItem(response.data.username, response.data.tagName, response.data.roles))
+    //     setLoading(false)
+    //     localStorage.setItem('tokens', response.data.token);
+    //     console.log(response)
+    //     setLogin(true)
+
+    // }, (error) => {
+    //     console.log(error);
+    //     setLoading(false)
+    //     setLogin(false)
+
+    // });
+}
 
   return (
     <SafeAreaView style={styles.mainDark}>
       <View>
-        <TouchableOpacity style={styles.header} onPress={openHello}>
+        <TouchableOpacity style={styles.header} onPress={() => navigation.navigate({ name: 'Hello' })}>
           <Image
             style={styles.image}
             source={require("./image/Vector.png")}
@@ -54,7 +63,7 @@ const Login = ({setShowHello, setShowLogin, setShowSignUp, setLogin}) => {
       </View>
 
       <View>
-        <Text style={styles.text}>Don’t have an account? <Text style={{color: "#2E9C3E"}} onPress={openSignUp}>Sign Up</Text></Text>
+        <Text style={styles.text}>Don’t have an account? <Text style={{color: "#2E9C3E"}} onPress={() => navigation.navigate({ name: 'SignUp' })}>Sign Up</Text></Text>
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>

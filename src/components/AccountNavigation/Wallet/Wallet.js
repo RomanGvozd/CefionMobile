@@ -33,7 +33,7 @@ const Wallet = ({navigation}) => {
                     >
                         <Image
                             style={GlobalStyle.image}
-                            source={require("./image/Vector.png")}
+                            source={require("../../../Image/BackArrow.png")}
                         />
                     </TouchableOpacity>
                     <View style={Style.titleWrapper}>

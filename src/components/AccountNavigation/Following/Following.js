@@ -23,7 +23,7 @@ const Following = ({ navigation }) => {
                 >
                     <Image
                         style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
+                        source={require("../../../Image/BackArrow.png")}
                     />
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>

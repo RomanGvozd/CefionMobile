@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { ScrollView, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { content } from "./GroupChat.config";
@@ -44,9 +44,15 @@ const GroupChat = ({navigation, groupID}) => {
 
     const[subscribe, setSubscribe] = useState(false)
 
+    const scrollViewRef = useRef();
+
     return(
         <>
-            <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
+            <ScrollView 
+                style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}
+                ref={scrollViewRef}
+                onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
+            >
                 <View style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight}>
                         <View style={Style.headerBlock}>
                             <TouchableOpacity 

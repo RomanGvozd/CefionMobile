@@ -6,6 +6,7 @@ import { CardStyleInterpolators, createStackNavigator, } from '@react-navigation
 import ChatList from '../ChatList/ChatList';
 import Chat from '../ChatList/Chat/Chat';
 import ChatSetting from '../ChatList/Chat/ChatSetting/ChatSetting';
+import ChatNew from '../ChatList/ChatNew/ChatNew';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,9 @@ const MessageNavigation = ({setLogin}) => {
         </Stack.Screen>
         <Stack.Screen name="ChatSetting">
           {props => <ChatSetting {...props} chatId={chatId} />}
+        </Stack.Screen>
+        <Stack.Screen name="ChatNew">
+          {props => <ChatNew {...props} />}
         </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

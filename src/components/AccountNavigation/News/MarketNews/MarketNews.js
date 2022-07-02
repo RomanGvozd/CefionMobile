@@ -34,10 +34,10 @@ const MarketNews = ({type, openNewsPage, setPageID}) => {
                         />
                         <View style={Style.blockItemText}>
                             {language === "EN" 
-                            ?<Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>
+                            ?<Text style={theme === "dark" ? Style.titleDark : Style.titleLight}>
                                 News Title
                             </Text>
-                            :<Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>
+                            :<Text style={theme === "dark" ? Style.titleDark : Style.titleLight}>
                                 News Title
                             </Text>
                             }

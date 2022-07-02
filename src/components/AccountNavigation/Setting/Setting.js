@@ -72,7 +72,7 @@ const Setting = ({setLogin, navigation }) => {
                 >
                     <Image
                         style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
+                        source={require("../../../Image/BackArrow.png")}
                     />
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
@@ -105,7 +105,7 @@ const Setting = ({setLogin, navigation }) => {
                         </Text>
                         <Image
                             style={showLanguage ? Style.imageLanguageActive : Style.imageLanguage}
-                            source={require("./image/Vector.png")}
+                            source={require("../../../Image/BackArrow.png")}
                         />
                     </TouchableOpacity>
                     {showLanguage && 

@@ -26,22 +26,32 @@ const News = ({setPageID, navigation}) => {
         <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 
 
-            <TouchableOpacity 
-                style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight} 
-                onPress={() => navigation.navigate({ name: 'Account' })}
-            >
-                <View 
-                style={GlobalStyle.imageWrapper}
-                >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
-                    />
+            <View style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight}>
+                <View style={Style.headerBlock}>
+                    <TouchableOpacity 
+                        style={Style.headerBlockLeft}
+                        onPress={() => navigation.navigate({ name: 'Account' })}
+                    >
+                        <Image
+                            style={GlobalStyle.image}
+                            source={require("../../../Image/BackArrow.png")}
+                        />
+                    </TouchableOpacity>
+                    <View style={Style.titleWrapper}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {News}
+                        </Text>
+                    </View>
+                    <TouchableOpacity 
+                        style={Style.headerBlockRight}
+                        onPress={() => navigation.navigate({ name: 'NewsCreate' })}
+                    >
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            New Article
+                        </Text>
+                    </TouchableOpacity>
                 </View>
-                <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
-                    {News}
-                </Text>
-            </TouchableOpacity>
+            </View>
 
 
             <View style={{padding: 20}}>

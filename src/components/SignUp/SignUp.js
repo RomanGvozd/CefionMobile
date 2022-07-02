@@ -1,22 +1,12 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 
-const SignUp = ({setShowHello, setShowSignUp, setShowLogin}) => {
-
-  const openHello = () => {
-    setShowHello(true)
-    setShowSignUp(false)
-  }
-
-  const openLogin = () => {
-    setShowLogin(true)
-    setShowSignUp(false)
-  }
+const SignUp = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.mainDark}>
       <View>
-        <TouchableOpacity style={styles.header} onPress={openHello}>
+        <TouchableOpacity style={styles.header} onPress={() => navigation.navigate({ name: 'Hello' })}>
           <Image
             style={styles.image}
             source={require("./image/Vector.png")}
@@ -41,7 +31,7 @@ const SignUp = ({setShowHello, setShowSignUp, setShowLogin}) => {
       </View>
 
       <View>
-        <Text style={styles.text}>Have any account? <Text style={{color: "#2E9C3E"}} onPress={openLogin}>Sign In</Text></Text>
+        <Text style={styles.text}>Have any account? <Text style={{color: "#2E9C3E"}} onPress={() => navigation.navigate({ name: 'Login' })}>Sign In</Text></Text>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Create</Text>
         </TouchableOpacity>

@@ -8,7 +8,7 @@ import { Style } from "./BinanceStatistics.style";
 
 import BinanceStatisticsMore from "./BinanceStatisticsMore/BinanceStatisticsMore";
 
-const BinanceStatistics = () => {
+const BinanceStatistics = ({show, setShow}) => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
 
@@ -43,8 +43,6 @@ const BinanceStatistics = () => {
         ShowMore,
         ShowLess,
     } = content[language]
-
-    const [show, setShow] = useState(false)
 
     return(
         <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
@@ -186,7 +184,10 @@ const BinanceStatistics = () => {
 
             {show && <BinanceStatisticsMore />}
 
-            <TouchableOpacity style={Style.button} onPress={()=>setShow(!show)}>
+            <TouchableOpacity 
+                style={Style.button} 
+                onPress={()=>setShow(!show)}
+            >
                 {show
                 ?<Text style={Style.buttonText}>
                     {ShowLess}
