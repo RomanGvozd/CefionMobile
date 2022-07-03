@@ -22,8 +22,8 @@ const NewsCreate = ({navigation}) => {
 
     const [text, setText] = useState("")
 
-
     return(
+        <>
         <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 
 
@@ -45,13 +45,12 @@ const NewsCreate = ({navigation}) => {
             </TouchableOpacity>
 
 
-            <View style={{padding: 20,}}>
-
+            <View style={{padding: 20}}>
 
                 <RichToolbar
                     editor={richText}
-                    selectedIconTint="#873c1e"
-                    iconTint="#fff"
+                    selectedIconTint="#2E9C3E"
+                    iconTint={theme === "dark" ? "#fff" : "#000"}
                     actions={[
                         actions.insertImage,
                         actions.setBold,
@@ -62,26 +61,35 @@ const NewsCreate = ({navigation}) => {
                         actions.setStrikethrough,
                         actions.setUnderline,
                     ]}
-                    style={Style.headerDark}
+                    style={theme === "dark" ? Style.headerDark : Style.headerLight}
                 />
-                {/* <RichEditor
-                    useContainer={false}
-                    disabled={false}
+                <RichEditor
                     ref={richText}
-                    style={{
-                        minHeight: 200,
-                        flex: 1,
-                        marginBottom: 2
+                    initialHeight={250}
+                    onChange={ descriptionText => {
+                        console.log("descriptionText:", descriptionText);
                     }}
-                    placeholder={"Start Writing Here"}
-                    onChange={(text) => setText(text)}
-                /> */}
-
+                    style={Style.textAreaDark}
+                />
+                <View></View>
 
             </View>
 
 
         </ScrollView>
+        <View style={theme === "dark" ? Style.footerDark : Style.footerLight}>
+            <TouchableOpacity style={Style.buttonSubmit}>
+                <Text style={Style.buttonSubmitText}>
+                    {SubmitToTheEditor}
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={Style.buttonDraft}>
+                <Text style={Style.buttonDraftText}>
+                    {SendToDraft}
+                </Text>
+            </TouchableOpacity>
+        </View>
+        </>
     )
 }
 

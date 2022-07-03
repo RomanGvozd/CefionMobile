@@ -8,6 +8,7 @@ import Statistics from './Statistics/Statistics'
 import Setting from './Setting/Setting';
 import Followers from './Followers/Followers';
 import Following from './Following/Following';
+import AccountInfo from '../AccountInfo/AccountInfo';
 
 import News from './News/News';
 import Page from './News/Page/Page';
@@ -32,6 +33,9 @@ const AccountNavigation = ({setLogin}) => {
   const [pageID, setPageID] = useState('')
   const [groupID, setGroupID] = useState('')
 
+  const [userID, setUserID] = useState('')
+  const [typeUser, setTypeUser] = useState('')
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -48,8 +52,16 @@ const AccountNavigation = ({setLogin}) => {
         <Stack.Screen name="Setting">
           {props => <Setting {...props} setLogin={setLogin} />}
         </Stack.Screen>
-        <Stack.Screen name="Followers" component={Followers} />
-        <Stack.Screen name="Following" component={Following} />
+        <Stack.Screen name="Followers">
+          {props => <Followers {...props} setTypeUser={setTypeUser} setUserID={setUserID}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Following">
+          {props => <Following {...props} setTypeUser={setTypeUser} setUserID={setUserID}/>}
+        </Stack.Screen>
+        <Stack.Screen name="AccountInfo">
+          {props => <AccountInfo {...props} typeUser={typeUser} userID={userID}/>}
+        </Stack.Screen>
+
         <Stack.Screen name="News">
           {props => <News {...props} setPageID={setPageID} />}
         </Stack.Screen>
@@ -59,6 +71,8 @@ const AccountNavigation = ({setLogin}) => {
         <Stack.Screen name="NewsCreate">
           {props => <NewsCreate {...props} />}
         </Stack.Screen>
+
+
         <Stack.Screen name="GroupList">
           {props => <GroupList {...props} setGroupID={setGroupID} />}
         </Stack.Screen>
@@ -77,6 +91,8 @@ const AccountNavigation = ({setLogin}) => {
         <Stack.Screen name="GroupAddTask">
           {props => <GroupAddTask {...props} groupID={groupID}/>}
         </Stack.Screen>
+
+
         <Stack.Screen name="Wallet">
           {props => <Wallet {...props}/>}
         </Stack.Screen>

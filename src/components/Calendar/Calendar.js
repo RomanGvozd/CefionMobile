@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useSelector } from "react-redux";
 import { SafeAreaView, ScrollView, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { Style } from "./Calendar.style";
@@ -11,12 +11,13 @@ import { content } from "./Calendar.config";
 import NavFooter from "../NavFooter/NavFooter";
 
 const Calendar = ({navigation}) => {
+
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
 
     const {Calendar, SearchForTask, GroupEvents, LoginToZoom} = content[language]
 
-    const [days, setDays] = useState("Mo")
+    const [days, setDays] = useState(moment().locale('en').format('dddd'))
 
     return(
         <>
@@ -56,18 +57,24 @@ const Calendar = ({navigation}) => {
                     <View style={Style.week}>
                         <View style={GlobalStyle.blockItemOne}>
                             <Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>
-                                14 Sep 2021
+                                {moment().locale('en').format('MMMM Do YYYY')}
                             </Text>
-                            <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
-                                Wed 29 Sep
+                            {language === "EN"
+                            ?<Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                                {moment().locale('en').format('dddd')}
                             </Text>
+                            :<Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                                {moment().locale('ru').format('dddd')}
+                            </Text>
+                            }
+
                         </View>
                         <View style={GlobalStyle.blockItemOne}>
                             {buttonsDays.map((item)=>(
                                 <TouchableOpacity 
                                     key={item.id}
                                     style={theme === "dark" ? Style.weekHeaderButtonDark : Style.weekHeaderButtonLight}
-                                    onPress={()=>setDays(item.titleEN)}
+                                    onPress={()=>setDays(item.dateFull)}
                                 >
                                     {language === "EN"
                                     ?<Text style={theme === "dark" ? Style.weekHeaderButtontextDark : Style.weekHeaderButtontextLight}>
@@ -78,9 +85,9 @@ const Calendar = ({navigation}) => {
                                     </Text>
                                     }
                                     <Text style={theme === "dark" ? Style.weekHeaderButtontextDark : Style.weekHeaderButtontextLight}>
-                                        {moment().date()}
+                                        {item.date}
                                     </Text>
-                                    {days === item.titleEN && <View style={Style.weekHeaderButtonActive}>
+                                    {(item.dateFull === days) && <View style={Style.weekHeaderButtonActive}>
                                     </View>}
                                 </TouchableOpacity>
                             ))}

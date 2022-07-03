@@ -13,7 +13,8 @@ import NavFooter from "../../NavFooter/NavFooter";
 import { changeTheme } from "../../common/store/theme/actions";
 
 const Account = ({setPageID, navigation }) => {
-
+    const following = useSelector((store) => store.following);
+    const followers = useSelector((store) => store.followers);
     const news = useSelector((store) => store.news);
     const user = useSelector((store) => store.user);
     const theme = useSelector((store) => store.theme.theme);
@@ -127,7 +128,7 @@ const Account = ({setPageID, navigation }) => {
                                 {Followers}
                             </Text>
                             <Text style={theme === "dark" ? Style.userInfoTextDark : Style.userInfoTextLight }>
-                                994
+                                {followers.length}
                             </Text>
                         </View>
                     </TouchableOpacity>
@@ -140,7 +141,7 @@ const Account = ({setPageID, navigation }) => {
                                 {Following}
                             </Text>
                             <Text style={theme === "dark" ? Style.userInfoTextDark : Style.userInfoTextLight }>
-                                703
+                                {following.length}
                             </Text>
                         </View>
                     </TouchableOpacity>
@@ -194,6 +195,7 @@ const Account = ({setPageID, navigation }) => {
                                     setPageID(item.id)
                                     navigation.navigate({ name: 'Page' })
                                 }}
+                                activeOpacity={1}
                             >
                                 <Image
                                     source={require("./image/popularNews.png")}

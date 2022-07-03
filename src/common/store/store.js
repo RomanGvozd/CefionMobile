@@ -8,7 +8,8 @@ import newsReducer from './news/reducer'
 import usersReducer from './users/reducer'
 import chatsReducer from './chats/reducer'
 import groupsReducer from './groups/reducer'
-
+import followingReducer from './following/reducer'
+import followersReducer from './followers/reducer'
 
 const root = combineReducers({
     theme: themeReducer,
@@ -18,6 +19,8 @@ const root = combineReducers({
     users: usersReducer,
     chats: chatsReducer,
     groups: groupsReducer,
+    following: followingReducer,
+    followers: followersReducer,
 });
 
 export const store = createStore(root, applyMiddleware(thunk))

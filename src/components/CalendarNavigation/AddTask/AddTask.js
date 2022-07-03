@@ -22,13 +22,20 @@ const AddTask = ({navigation}) => {
         Create,
      } = content[language]
 
-    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
-    const [show, showModal] = useState(false);
-
-    const handleDatePicked = date => {
-        console.log("A date has been picked: ", date);
-    };
+     const showDatePicker = () => {
+       setDatePickerVisibility(true);
+     };
+   
+     const hideDatePicker = () => {
+       setDatePickerVisibility(false);
+     };
+   
+     const handleConfirm = (date) => {
+       console.warn("A date has been picked: ", date);
+       hideDatePicker();
+     };
 
     return(
         <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
@@ -73,13 +80,14 @@ const AddTask = ({navigation}) => {
                     /> */}
                     <TouchableOpacity
                         style={theme === "dark" ? Style.inputDark : Style.inputLight}
-                        onPress={() => showModal(!show)}
+                        onPress={showDatePicker}
                     >
                     </TouchableOpacity>
                     <DateTimePickerModal
-                        isVisible={show}
-                        onConfirm={handleDatePicked}
-                        onCancel={() => showModal(false)}
+                        isVisible={isDatePickerVisible}
+                        mode="date"
+                        onConfirm={handleConfirm}
+                        onCancel={hideDatePicker}
                     />
                     <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTextLight}>
                         {Description}

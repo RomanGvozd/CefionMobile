@@ -15,7 +15,7 @@ import { NativeRouter, Routes, Route} from "react-router-native";
 
 const App = () => {
 
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(true)
 
   return (
     <Provider store={store}>

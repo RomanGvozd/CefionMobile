@@ -2,12 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { ScrollView, Image, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import { content } from "./Followers.config";
-import { array } from "./Followers.array";
 
 import { Style } from "./Followers.style";
 import { GlobalStyle } from "../../../../global.style";
 
-const Followers = ({ navigation }) => {
+const Followers = ({ navigation, setTypeUser, setUserID }) => {
+    const followers = useSelector((store) => store.followers);
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
 
@@ -45,10 +45,15 @@ const Followers = ({ navigation }) => {
                 />
 
 
-                {array.map((item)=>(
-                    <View 
+                {followers.map((item)=>(
+                    <TouchableOpacity 
                         style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight} 
                         key={item.id}
+                        onPress={()=>{
+                            setTypeUser("followers")
+                            setUserID(item.id)
+                            navigation.navigate({ name: 'AccountInfo' })
+                        }}
                     >
                         <View style={Style.blockItemOne}>
                             <Image
@@ -59,12 +64,12 @@ const Followers = ({ navigation }) => {
                                 <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                     {item.name}
                                 </Text>
-                                <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
+                                <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTextLight}>
                                     {item.tagName}
                                 </Text>
                             </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 ))}
             </View>
 

@@ -6,6 +6,7 @@ import Hello from "../Hello/Hello";
 import Login from "../Login/Login";
 import Presentation from "../Presentation/Presentation";
 import SignUp from "../SignUp/SignUp";
+import ForgotPassword from "../ForgotPassword/ForgotPassword";
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,9 @@ const LoginNavigation = ({setLogin}) => {
             </Stack.Screen>
             <Stack.Screen name="SignUp">
                 {props => <SignUp {...props} />}
+            </Stack.Screen>
+            <Stack.Screen name="ForgotPassword">
+                {props => <ForgotPassword {...props} />}
             </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

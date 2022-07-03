@@ -3,7 +3,7 @@ export const content = {
         NewArticle: "New Article",
         SubmitToTheEditor: "Submit to the editor",
         SendToDraft: "Send to draft",
-
+        
     },
     RU: {
         NewArticle: "Новая статья",
