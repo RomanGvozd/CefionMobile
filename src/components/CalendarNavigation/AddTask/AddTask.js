@@ -9,6 +9,8 @@ import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 import { GlobalStyle } from "../../../../global.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const AddTask = ({navigation}) => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
@@ -44,12 +46,9 @@ const AddTask = ({navigation}) => {
                 onPress={() => navigation.navigate({ name: 'Calendar' })}
             >
                 <View 
-                style={GlobalStyle.imageWrapper}
+                    style={GlobalStyle.imageWrapper}
                 >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
-                    />
+                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                     {AddTask}

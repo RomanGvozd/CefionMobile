@@ -7,6 +7,8 @@ import { transactions } from "./Transactions";
 import { GlobalStyle } from "../../../../global.style";
 import { Style } from "./Wallet.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const Wallet = ({navigation}) => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
@@ -31,10 +33,7 @@ const Wallet = ({navigation}) => {
                         style={Style.headerBlockLeft}
                         onPress={() => navigation.navigate({ name: 'Account' })}
                     >
-                        <Image
-                            style={GlobalStyle.image}
-                            source={require("../../../Image/BackArrow.png")}
-                        />
+                        <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                     </TouchableOpacity>
                     <View style={Style.titleWrapper}>
                         <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>

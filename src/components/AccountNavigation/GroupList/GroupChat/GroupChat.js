@@ -7,6 +7,8 @@ import { editItem } from '../../../../common/store/groups/actions'
 import { GlobalStyle } from "../../../../../global.style";
 import { Style } from "./GroupChat.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const GroupChat = ({navigation, groupID}) => {
     const dispatch = useDispatch()
 
@@ -59,10 +61,7 @@ const GroupChat = ({navigation, groupID}) => {
                                 style={Style.headerBlockLeft}
                                 onPress={() => navigation.navigate({ name: 'GroupList' })}
                             >
-                                <Image
-                                    style={GlobalStyle.image}
-                                    source={require("./image/Vector.png")}
-                                />
+                                <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                                 <View style={{marginLeft: 12}}>
                                     <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                         {Back}

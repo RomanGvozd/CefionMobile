@@ -7,6 +7,8 @@ import GroupListItem from "./GroupListItem/GroupListItem";
 import { GlobalStyle } from "../../../../global.style";
 import { Style } from "./GroupList.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const GroupList = ({setGroupID, navigation}) => {
 
     const groups = useSelector((store) => store.groups);
@@ -27,10 +29,7 @@ const GroupList = ({setGroupID, navigation}) => {
                         style={Style.headerBlockLeft}
                         onPress={() => navigation.navigate({ name: 'Account' })}
                     >
-                        <Image
-                            style={GlobalStyle.image}
-                            source={require("../../../Image/BackArrow.png")}
-                        />
+                        <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                     </TouchableOpacity>
                     <View style={Style.titleWrapper}>
                         <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>

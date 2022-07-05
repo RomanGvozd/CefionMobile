@@ -7,6 +7,8 @@ import RestrictionsModal from "./RestrictionsModal/RestrictionsModal";
 import { GlobalStyle } from "../../../../../../../global.style";
 import { Style } from "./GroupChatEdit.style";
 
+import BackArrowSvg from '../../../../../../Image/BackArrow.svg';
+
 const GroupChatEdit = ({groupID, navigation}) => {
 
     const groups = useSelector((store) => store.groups);
@@ -44,10 +46,7 @@ const GroupChatEdit = ({groupID, navigation}) => {
                         style={Style.headerBlockLeft}
                         onPress={() => navigation.navigate({ name: 'GroupChatSetting' })}
                     >
-                        <Image
-                            style={GlobalStyle.image}
-                            source={require("./image/Vector.png")}
-                        />
+                        <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                         <View style={{marginLeft: 12}}>
                             <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                 {Back}

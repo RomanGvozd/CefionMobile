@@ -53,9 +53,7 @@ export const GlobalStyle = {
     imageReverce: {
         width: 10,
         height: 15,
-        transform: [
-            {rotate: "180deg"}
-        ],
+        transform: [{rotate: "180deg"}],
     },
     headerTitleDark: {
         color: "#fff",

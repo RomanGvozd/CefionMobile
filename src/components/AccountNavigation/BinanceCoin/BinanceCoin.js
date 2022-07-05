@@ -11,6 +11,9 @@ import BinanceConverter from "./BinanceConverter/BinanceConverter";
 import BinanceStatistics from "./BinanceStatistics/BinanceStatistics";
 import BinanceCionMore from "./BinanceCionMore/BinanceCionMore";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+import BinanceCoinSvg from './image/BinanceCoin.svg'
+
 const BinanceCoin = ({navigation}) => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
@@ -38,12 +41,9 @@ const BinanceCoin = ({navigation}) => {
                 onPress={() => navigation.navigate({ name: 'Account' })}
             >
                 <View 
-                style={GlobalStyle.imageWrapper}
+                    style={GlobalStyle.imageWrapper}
                 >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("../../../Image/BackArrow.png")}
-                    />
+                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                     Binance Coin
@@ -55,10 +55,7 @@ const BinanceCoin = ({navigation}) => {
 
 
                 <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight} >
-                    <Image
-                        style={Style.imageBitcoin}
-                        source={require("./image/Bitcoin.png")}
-                    />
+                    <BinanceCoinSvg />
                     <View style={{padding: 7}}></View>
                     <View style={GlobalStyle.blockItemOneCenter}>
                         <View style={Style.statsButtonActive}>

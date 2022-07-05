@@ -6,6 +6,8 @@ import { content } from "./GroupChatSetting.config";
 import { GlobalStyle } from "../../../../../../global.style";
 import { Style } from "./GroupChatSetting.style";
 
+import BackArrowSvg from '../../../../../Image/BackArrow.svg';
+
 const GroupChatSetting = ({groupID, navigation}) => {
 
     const groups = useSelector((store) => store.groups);
@@ -44,10 +46,7 @@ const GroupChatSetting = ({groupID, navigation}) => {
                         style={Style.headerBlockLeft}
                         onPress={() => navigation.navigate({ name: 'GroupChat' })}
                     >
-                        <Image
-                            style={GlobalStyle.image}
-                            source={require("./image/Vector.png")}
-                        />
+                        <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                         <View style={{marginLeft: 12}}>
                             <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                 {Back}

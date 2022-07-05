@@ -10,10 +10,10 @@ export const ACTION_EDIT_CHAT = "ACTION_EDIT_CHAT";
 //   };
 // }
 
-export function addItem(title, users, date, type, message) {
+export function addChat(id, title, users, date, type, message) {
   return {
     type: ACTION_ADD_CHAT,
-    payload: { title, users, date, type, message}
+    payload: {id, title, users, date, type, message}
   };
 }
 

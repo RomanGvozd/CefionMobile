@@ -6,6 +6,8 @@ import moment from "moment";
 import { Style } from "./Page.style";
 import { GlobalStyle } from "../../../../../global.style";
 
+import BackArrowSvg from '../../../../Image/BackArrow.svg';
+
 const Page = ({pageID, navigation}) => {
     const newsPublish = useSelector((store) => store.news);
     const theme = useSelector((store) => store.theme.theme);
@@ -23,12 +25,9 @@ const Page = ({pageID, navigation}) => {
                 onPress={() => navigation.navigate({ name: 'News' })}
             >
                 <View 
-                style={GlobalStyle.imageWrapper}
+                    style={GlobalStyle.imageWrapper}
                 >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
-                    />
+                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                 

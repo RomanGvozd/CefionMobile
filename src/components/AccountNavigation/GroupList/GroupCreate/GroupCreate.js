@@ -6,6 +6,8 @@ import { content } from "./GroupCreate.config";
 import { GlobalStyle } from "../../../../../global.style";
 import { Style } from "./GroupCreate.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const GroupCreate = ({navigation, groupID}) => {
     const groups = useSelector((store) => store.groups);
     const theme = useSelector((store) => store.theme.theme);
@@ -34,10 +36,7 @@ const GroupCreate = ({navigation, groupID}) => {
                 <View 
                 style={GlobalStyle.imageWrapper}
                 >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
-                    />
+                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                     {NewGroup}

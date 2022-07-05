@@ -29,7 +29,9 @@ export const Style = {
         bottom: 0,
         width: "100%",
         backgroundColor: "#1C1C1E",
-        padding: 15,
+        paddingLeft: 15,
+        paddingright: 15,
+        paddingBottom: 15,
         borderTopWidth: 1,
         borderTopColor: "#424246",
     },
@@ -39,9 +41,32 @@ export const Style = {
         bottom: 0,
         width: "100%",
         backgroundColor: "#fff",
-        padding: 15,
+        paddingLeft: 15,
+        paddingright: 15,
+        paddingBottom: 15,
         borderTopWidth: 1,
         borderTopColor: "#D6D6D6",
+    },
+    footerButtonWrapper: {
+        width: "100%",
+        height: "auto",
+        flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: 'center',
+        paddingTop: 10,
+        paddingBottom: 15,
+    },
+    buttonLineDark: {
+        width: 50,
+        height: 7,
+        borderRadius: 5,
+        backgroundColor: "#424246",
+    },
+    buttonLineLight: {
+        width: 20,
+        height: 5,
+        borderRadius: 5,
+        backgroundColor: "#fff",
     },
     buttonSubmit: {
         width: "100%",
@@ -67,5 +92,44 @@ export const Style = {
         fontSize: 15,
         textAlign: "center",
     },
+
+    //==================input==============
+
+    inputDark: {
+        backgroundColor: "#1C1C1E",
+        borderWidth: 1,
+        borderColor: "#424246",
+        borderRadius: 15,
+        padding: 15,
+        color: "#fff",
+        marginBottom: 20,
+
+    },
+    inputLight: {
+        backgroundColor: "#fff",
+        borderWidth: 1,
+        borderColor: "#D6D6D6",
+        borderRadius: 15,
+        padding: 15,
+        color: "#000",
+        marginBottom: 20,
+
+    },
+
+    //===============blockTag=====================
+
+    blockTag: {
+        borderWidth: 1,
+        borderColor: "#2E9C3E",
+        padding: 5,
+        borderRadius: 5,
+        marginRight: 10,
+        marginBottom: 10,
+    },
+    blockTagText: {
+        color: "#2E9C3E",
+        fontSize: 13,
+        textAlign: "center",
+    }
 
 }

@@ -12,6 +12,16 @@ import NavFooter from "../../NavFooter/NavFooter";
 
 import { changeTheme } from "../../common/store/theme/actions";
 
+import SettingSvg from './image/Setting.svg'
+import StatisticSvg from './image/Statistic.svg'
+import FollowersSvg from './image/Followers.svg'
+import WalletSvg from './image/Wallet.svg'
+import NavGroupSvg from './image/NavGroup.svg'
+import NavNewsSvg from './image/NavNews.svg'
+import NavWalletSvg from './image/NavWallet.svg'
+import BackArrowSvg from '../../../Image/BackArrow.svg'
+
+
 const Account = ({setPageID, navigation }) => {
     const following = useSelector((store) => store.following);
     const followers = useSelector((store) => store.followers);
@@ -63,11 +73,8 @@ const Account = ({setPageID, navigation }) => {
                 <Text style={theme === "dark" ? Style.headerSubTitleDark : Style.headerSubTitleLight}>
                     {user.tagName}
                 </Text>
-                <View>
-                    <Image
-                        style={Style.headerImage}
-                        source={require("./image/settings.png")}
-                    />
+                <View >
+                    <SettingSvg style={Style.headerImage} fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
             </TouchableOpacity>
 
@@ -101,17 +108,14 @@ const Account = ({setPageID, navigation }) => {
                 >
                     <View style={theme === "dark" ? Style.statisticDark : Style.statisticLight}>
                         <View style={{flexDirection: "row"}}>
-                            <Image
-                                style={{width: 20, height: 20}}
-                                source={require("./image/statisticIcon.png")}
-                            />
+                            <StatisticSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight}>
                                 {Statistics}
                             </Text>
                         </View>
-                        <Image
+                        <BackArrowSvg
                             style={GlobalStyle.imageReverce}
-                            source={require("./image/statisticArrow.png")}
+                            fill={theme === "dark" ? "#fff" : "#000"}
                         />
                     </View>
                 </TouchableOpacity>
@@ -120,9 +124,7 @@ const Account = ({setPageID, navigation }) => {
 
                 <View style={theme === "dark" ? Style.userInfoDark : Style.userInfoLight}>
                     <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Followers' })}>
-                        <Image
-                            source={require("./image/followers.png")}
-                        />
+                        <FollowersSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
                                 {Followers}
@@ -133,9 +135,7 @@ const Account = ({setPageID, navigation }) => {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Following' })}>
-                        <Image
-                            source={require("./image/followers.png")}
-                        />
+                        <FollowersSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
                                 {Following}
@@ -146,9 +146,7 @@ const Account = ({setPageID, navigation }) => {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Wallet' })}>
-                        <Image
-                            source={require("./image/wallet.png")}
-                        />
+                        <WalletSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
                                 {Wallet}
@@ -159,9 +157,7 @@ const Account = ({setPageID, navigation }) => {
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity style={Style.infoItem} onPress={() => navigation.navigate({ name: 'Everscape' })}>
-                        <Image
-                            source={require("./image/wallet.png")}
-                        />
+                        <WalletSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View>
                             <Text style={theme === "dark" ? Style.TextDark : Style.TextLight }>
                                 {WalletAdress}
@@ -227,10 +223,7 @@ const Account = ({setPageID, navigation }) => {
                         style={Style.navButton}
                         onPress={() => navigation.navigate({ name: 'GroupList' })}
                     >
-                        <Image
-                            style={Style.navButtonImage}
-                            source={require("./image/navGroup.png")}
-                        />
+                        <NavGroupSvg />
                         <View style={Style.navButtonInfo}>
                             <Text style={Style.navButtonText}>{Group}</Text>
                             <Text style={Style.navButtonSubText}>{FreeTON}</Text>
@@ -240,10 +233,7 @@ const Account = ({setPageID, navigation }) => {
                         style={Style.navButton} 
                         onPress={() => navigation.navigate({ name: 'News' })}
                     >
-                        <Image
-                            style={Style.navButtonImage}
-                            source={require("./image/navGroup.png")}
-                        />
+                        <NavNewsSvg />
                         <View style={Style.navButtonInfo}>
                             <Text style={Style.navButtonText}>{News}</Text>
                             <Text style={Style.navButtonSubText}>{Online}</Text>
@@ -253,10 +243,7 @@ const Account = ({setPageID, navigation }) => {
                         style={Style.navButton}
                         onPress={() => navigation.navigate({ name: 'BinanceCoin' })}
                     >
-                        <Image
-                            style={Style.navButtonImage}
-                            source={require("./image/navGroup.png")}
-                        />
+                        <NavWalletSvg/>
                         <View style={Style.navButtonInfo}>
                             <Text style={Style.navButtonText}>{Wallet}</Text>
                         </View>

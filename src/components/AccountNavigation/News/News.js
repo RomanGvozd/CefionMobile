@@ -8,6 +8,8 @@ import MarketNews from "./MarketNews/MarketNews";
 import { Style } from "./News.style";
 import { GlobalStyle } from "../../../../global.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const News = ({setPageID, navigation}) => {
     const news = useSelector((store) => store.news);
     const theme = useSelector((store) => store.theme.theme);
@@ -32,10 +34,7 @@ const News = ({setPageID, navigation}) => {
                         style={Style.headerBlockLeft}
                         onPress={() => navigation.navigate({ name: 'Account' })}
                     >
-                        <Image
-                            style={GlobalStyle.image}
-                            source={require("../../../Image/BackArrow.png")}
-                        />
+                        <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                     </TouchableOpacity>
                     <View style={Style.titleWrapper}>
                         <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>

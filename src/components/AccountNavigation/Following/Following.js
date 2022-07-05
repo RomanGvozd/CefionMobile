@@ -6,6 +6,8 @@ import { content } from "./Following.config";
 import { Style } from "./Following.style";
 import { GlobalStyle } from "../../../../global.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const Following = ({ navigation, setTypeUser, setUserID }) => {
     const following = useSelector((store) => store.following);
     const theme = useSelector((store) => store.theme.theme);
@@ -19,12 +21,9 @@ const Following = ({ navigation, setTypeUser, setUserID }) => {
 
             <TouchableOpacity style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight} onPress={() => navigation.navigate({ name: 'Account' })}>
                 <View 
-                style={GlobalStyle.imageWrapper}
+                    style={GlobalStyle.imageWrapper}
                 >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("../../../Image/BackArrow.png")}
-                    />
+                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                     {Following}

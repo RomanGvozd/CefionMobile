@@ -3,7 +3,7 @@ import { useSelector} from "react-redux";
 import { NavigationContainer } from '@react-navigation/native';
 import { CardStyleInterpolators, createStackNavigator, } from '@react-navigation/stack';
 
-import Calendar from '../Calendar/Calendar';
+import Calendar from './Calendar/Calendar';
 import AddTask from './AddTask/AddTask';
 
 const Stack = createStackNavigator();

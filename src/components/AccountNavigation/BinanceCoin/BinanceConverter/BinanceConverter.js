@@ -6,6 +6,8 @@ import { content } from "./BinanceConverter.config";
 import { GlobalStyle } from "../../../../../global.style";
 import { Style } from "./BinanceConverter.style";
 
+import BinanceCoinSvg from "../image/BinanceCoin.svg";
+
 const BinanceConverter = () => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
@@ -19,10 +21,7 @@ const BinanceConverter = () => {
             </Text>
             <View style={Style.blockBinance}>
                 <View style={{flexDirection: "row", alignItems: "center"}}>
-                    <Image
-                        style={Style.image}
-                        source={require("./image/Bitcoin.png")}
-                    />
+                    <BinanceCoinSvg />
                     <View style={{marginLeft: 10}}>
                         <Text style={theme === "dark" ? Style.subTextDark : Style.subTextLight}>
                             BNB
@@ -38,10 +37,7 @@ const BinanceConverter = () => {
             </View>
             <View style={Style.blockUSD}>
                 <View style={{flexDirection: "row", alignItems: "center"}}>
-                    <Image
-                        style={Style.image}
-                        source={require("./image/Bitcoin.png")}
-                    />
+                    <BinanceCoinSvg />
                     <View style={{marginLeft: 10}}>
                         <Text style={theme === "dark" ? Style.subTextDark : Style.subTextLight}>
                             USD

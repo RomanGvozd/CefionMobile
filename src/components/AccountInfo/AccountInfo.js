@@ -1,20 +1,29 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ScrollView, Switch, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import { content } from "./AccountInfo.config";
 
 import { GlobalStyle } from "../../../global.style";
 import { Style } from "./AccountInfo.style";
 
-const AccountInfo = ({ navigation, typeUser, userID }) => {
+import BackArrowSvg from '../../Image/BackArrow.svg';
+import FollowersSvg from './image/Followers.svg';
+import WalletSvg from './image/Wallet.svg';
 
+import { addChat } from '../../common/store/chats/actions'
+
+const AccountInfo = ({ navigation, typeUser, userID, setChatID }) => {
+
+    const dispatch = useDispatch();
+
+    const currentUser = useSelector((store) => store.user);
     const followers = useSelector((store) => store.followers);
     const following = useSelector((store) => store.following);
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
 
-    let currentUser = following.filter((item)=> item.id === userID)
-    currentUser = currentUser[0]
+    let findUser = following.filter((item)=> item.id === userID)
+    findUser = findUser[0]
 
     let user = null
 
@@ -24,6 +33,9 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
     }else if(typeUser === "following"){
         user = following.filter((item)=> item.id === userID)
         user = user[0]
+    }else if(typeUser === "chatNew"){
+        user = following.filter((item)=> item.id === userID)
+        user = user[0]
     }
 
     const back = () => {
@@ -31,6 +43,8 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
             navigation.navigate({ name: 'Followers' })
         }else if(typeUser === "following"){
             navigation.navigate({ name: 'Following' })
+        }else if(typeUser === "chatNew"){
+            navigation.navigate({ name: 'ChatNew' })
         }
     }
 
@@ -45,6 +59,20 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
         WalletAdress,
     } = content[language]
 
+    const handleMessage = () => {
+        const chatID = Date.now()
+        dispatch(addChat(
+            chatID,
+            user.name,
+            [{id: currentUser.id, name: currentUser.name}, {id: user.id, name: user.name}],
+            chatID, 
+            "public", 
+            [],
+        ));
+        setChatID(chatID)
+        navigation.navigate({ name: 'Chat' })
+    }
+
     return(
         <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 
@@ -54,12 +82,9 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
             onPress={back}
         >
                 <View 
-                style={GlobalStyle.imageWrapper}
+                    style={GlobalStyle.imageWrapper}
                 >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("./image/Vector.png")}
-                    />
+                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                     {user.tagName}
@@ -84,7 +109,7 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
                     </View>
                 </View>
                 <TouchableOpacity style={theme === "dark" ? Style.buttonDark : Style.buttonLight}>
-                    {currentUser === undefined
+                    {findUser === undefined
                     ? <Text style={theme === "dark" ? Style.buttonTextDark : Style.buttonTextLight}>
                         {Subscribe}
                     </Text>
@@ -94,7 +119,10 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
                     }
                 </TouchableOpacity>
                 <View style={GlobalStyle.blockItemOne}>
-                    <TouchableOpacity style={theme === "dark" ? Style.blockDark : Style.blockLight}>
+                    <TouchableOpacity 
+                        style={theme === "dark" ? Style.blockDark : Style.blockLight}
+                        onPress={handleMessage}
+                    >
                         <Text style={theme === "dark" ? Style.subTextDark : Style.subTextLight}>
                             {Message}
                         </Text>
@@ -107,10 +135,7 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
                 </View>
                 <View style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}>
                     <View style={GlobalStyle.blockItemOneCenter}>
-                        <Image
-                            style={Style.blockImage}
-                            source={require("./image/followers.png")}
-                        />
+                        <FollowersSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View style={{marginLeft: 10}}>
                             <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                 {Followers}
@@ -122,10 +147,7 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
                     </View>
                     <View style={{padding: 5}}></View>
                     <View style={GlobalStyle.blockItemOneCenter}>
-                        <Image
-                            style={Style.blockImage}
-                            source={require("./image/followers.png")}
-                        />
+                        <FollowersSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View style={{marginLeft: 10}}>
                             <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                 {Following}
@@ -137,10 +159,7 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
                     </View>
                     <View style={{padding: 5}}></View>
                     <View style={GlobalStyle.blockItemOneCenter}>
-                        <Image
-                            style={Style.blockImage}
-                            source={require("./image/wallet.png")}
-                        />
+                        <WalletSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View style={{marginLeft: 10}}>
                             <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                 {Wallet}
@@ -152,10 +171,7 @@ const AccountInfo = ({ navigation, typeUser, userID }) => {
                     </View>
                     <View style={{padding: 5}}></View>
                     <View style={GlobalStyle.blockItemOneCenter}>
-                        <Image
-                            style={Style.blockImage}
-                            source={require("./image/wallet.png")}
-                        />
+                        <WalletSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         <View style={{marginLeft: 10}}>
                             <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
                                 {WalletAdress}

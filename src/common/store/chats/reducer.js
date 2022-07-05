@@ -61,8 +61,9 @@ export default function reducer(state = INITIAL_STATE, { type, payload }) {
         // case ACTION_GET_NEWS:
         //     return [...state, ...payload]
         case ACTION_ADD_CHAT:
+            console.log(payload)
             return [ ...state, {
-                id: Date.now(), 
+                id: payload.id,
                 title: payload.title, 
                 users: payload.users,
                 date: payload.date,

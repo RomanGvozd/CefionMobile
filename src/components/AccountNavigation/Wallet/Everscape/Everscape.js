@@ -6,6 +6,11 @@ import { content } from "./Everscape.config";
 import { GlobalStyle } from "../../../../../global.style";
 import { Style } from "./Everscape.style";
 
+import BackArrowSvg from '../../../../Image/BackArrow.svg';
+import CopySvg from './image/Copy.svg';
+import ShowSvg from './image/Show.svg';
+import EverscaleSvg from './image/Everscale.svg';
+
 const Everscape = ({navigation}) => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
@@ -27,12 +32,9 @@ const Everscape = ({navigation}) => {
                 <View style={Style.headerBlock}>
                     <TouchableOpacity 
                         style={Style.headerBlockLeft}
-                        onPress={() => navigation.navigate({ name: 'Wallet' })}
+                        onPress={() => navigation.navigate({ name: 'Account' })}
                     >
-                        <Image
-                            style={GlobalStyle.image}
-                            source={require("./image/Vector.png")}
-                        />
+                        <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                     </TouchableOpacity>
                     <View style={Style.titleWrapper}>
                         <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
@@ -58,10 +60,7 @@ const Everscape = ({navigation}) => {
                     style={theme === "dark" ? GlobalStyle.blockDark : GlobalStyle.blockLight}
                 >
                     <View style={GlobalStyle.blockItemOneCenter}>
-                        <Image
-                            style={Style.imageEverscape}
-                            source={require("./image/Everscape.png")}
-                        />
+                        <EverscaleSvg />
                         <View style={{marginLeft: 20}}>
                             <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTextLight}>
                                 Everscale
@@ -86,10 +85,7 @@ const Everscape = ({navigation}) => {
                             0x9129831203981dj192nd...
                         </Text>
                         <TouchableOpacity>
-                            <Image
-                                style={Style.imageCopy}
-                                source={require("./image/Copy.png")}
-                            />
+                            <CopySvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -103,10 +99,7 @@ const Everscape = ({navigation}) => {
                             0x9129831203981dj192nd...
                         </Text>
                         <TouchableOpacity>
-                            <Image
-                                style={Style.imageCopy}
-                                source={require("./image/Copy.png")}
-                            />
+                            <CopySvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -121,17 +114,11 @@ const Everscape = ({navigation}) => {
                         </Text>
                         <View style={{flexDirection: "row"}}>
                             <TouchableOpacity onPress={()=>setShowKey(!showKey)}>
-                                <Image
-                                    style={Style.imageSearch}
-                                    source={require("./image/Search.png")}
-                                />
+                                <ShowSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                             </TouchableOpacity>
                             <View style={{padding: 7}}></View>
                             <TouchableOpacity>
-                                <Image
-                                    style={Style.imageCopy}
-                                    source={require("./image/Copy.png")}
-                                />
+                                <CopySvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
                             </TouchableOpacity>
                         </View>
                     </View>

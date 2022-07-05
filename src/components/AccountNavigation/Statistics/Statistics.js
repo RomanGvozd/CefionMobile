@@ -6,6 +6,8 @@ import { content } from "./Statistics.config";
 import { Style } from "./Statistics.style";
 import { GlobalStyle } from "../../../../global.style";
 
+import BackArrowSvg from '../../../Image/BackArrow.svg';
+
 const Statistics = ({ navigation }) => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
@@ -34,12 +36,9 @@ const Statistics = ({ navigation }) => {
                 onPress={() => navigation.navigate({ name: 'Account' })}
             >
                 <View 
-                style={GlobalStyle.imageWrapper}
+                    style={GlobalStyle.imageWrapper}
                 >
-                    <Image
-                        style={GlobalStyle.image}
-                        source={require("../../../Image/BackArrow.png")}
-                    />
+                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
                 </View>
                 <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
                     {Statistics}

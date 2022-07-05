@@ -9,6 +9,7 @@ import Setting from './Setting/Setting';
 import Followers from './Followers/Followers';
 import Following from './Following/Following';
 import AccountInfo from '../AccountInfo/AccountInfo';
+import Chat from '../MessageNavigation/ChatList/Chat/Chat';
 
 import News from './News/News';
 import Page from './News/Page/Page';
@@ -28,13 +29,15 @@ import BinanceCoin from './BinanceCoin/BinanceCoin';
 const Stack = createStackNavigator();
 
 const AccountNavigation = ({setLogin}) => {
-  const theme = useSelector((store) => store.theme.theme);
 
   const [pageID, setPageID] = useState('')
   const [groupID, setGroupID] = useState('')
 
   const [userID, setUserID] = useState('')
   const [typeUser, setTypeUser] = useState('')
+
+  const [chatID, setChatID] = useState('')
+  const [typeChat, setTypeChat] = useState('account')
 
   return (
     <NavigationContainer>
@@ -59,7 +62,10 @@ const AccountNavigation = ({setLogin}) => {
           {props => <Following {...props} setTypeUser={setTypeUser} setUserID={setUserID}/>}
         </Stack.Screen>
         <Stack.Screen name="AccountInfo">
-          {props => <AccountInfo {...props} typeUser={typeUser} userID={userID}/>}
+          {props => <AccountInfo {...props} typeUser={typeUser} userID={userID} setChatID={setChatID}/>}
+        </Stack.Screen>
+        <Stack.Screen name="Chat">
+          {props => <Chat {...props} chatID={chatID} typeChat={typeChat}/>}
         </Stack.Screen>
 
         <Stack.Screen name="News">

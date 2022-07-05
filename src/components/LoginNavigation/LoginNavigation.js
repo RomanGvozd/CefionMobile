@@ -2,11 +2,11 @@ import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { CardStyleInterpolators, createStackNavigator, } from '@react-navigation/stack';
 
-import Hello from "../Hello/Hello";
-import Login from "../Login/Login";
-import Presentation from "../Presentation/Presentation";
-import SignUp from "../SignUp/SignUp";
-import ForgotPassword from "../ForgotPassword/ForgotPassword";
+import Hello from "./Hello/Hello";
+import Login from "./Login/Login";
+import Presentation from "./Presentation/Presentation";
+import SignUp from "./SignUp/SignUp";
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
 
 const Stack = createStackNavigator();
 
