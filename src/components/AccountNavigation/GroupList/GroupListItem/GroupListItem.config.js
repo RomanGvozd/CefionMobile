@@ -1,13 +1,13 @@
 export const content = {
     EN: {
         users: "users",
-        Delete: "Delete",
+        Leave: "Leave",
         Unread: "Unread",
 
     },
     RU: {
         users: "пользователей",
-        Delete: "Удалить",
+        Leave: "Выйти",
         Unread: "Не прочитано",
         
     }

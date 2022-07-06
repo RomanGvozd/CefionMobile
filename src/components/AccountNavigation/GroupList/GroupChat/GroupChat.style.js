@@ -1,4 +1,33 @@
 export const Style = {
+    headerDark: {
+        width: "100%",
+        backgroundColor: "#1C1C1E",
+        paddingTop: 15,
+        paddingBottom: 15,
+        position: "relative",
+        borderBottomWidth: 1,
+        borderBottomColor: "#424246",
+        alingItems: "center",
+        position: "absolute",
+        left: 0,
+        top: 0,
+        zIndex: 100,
+    },
+    headerLight: {
+        width: "100%",
+        backgroundColor: "#fff",
+        paddingTop: 15,
+        paddingBottom: 15,
+        position: "relative",
+        borderBottomWidth: 1,
+        borderBottomColor: "#D6D6D6",
+        alingItems: "center",
+        position: "absolute",
+        left: 0,
+        top: 0,
+        zIndex: 100,
+        
+    },
     headerBlock: {
         width: "100%",
         flexDirection: 'row',
@@ -40,17 +69,51 @@ export const Style = {
         paddingBottom: 15,
 
     },
+    blockmessageAutorWrapper: {
+        width: "20%",
+        justifyContent: "center",
+        alignItems: 'center',
+    },
+    messageAutorDark: {
+        fontSize: 10,
+        color: "rgba(255, 255, 255, 0.5)",
+    },
+    messageAutorLight: {
+        fontSize: 10,
+        color: "rgba(0, 0, 0, 0.5)",
+    },
     blockMessageTextWrapperDark: {
         width: "80%",
         backgroundColor: "#fff",
         padding: 12,
         borderRadius: 15,
+        position: "relative",
     },
     blockMessageTextWrapperLight: {
         width: "80%",
         backgroundColor: "#1C1C1E",
         padding: 12,
         borderRadius: 15,
+        position: "relative",
+    },
+    messageVector: {
+        position: "absolute",
+        right: -8,
+        top: 15,
+    },
+    messageVectorReverce: {
+        position: "absolute",
+        left: -8,
+        top: 15,
+        transform: [{rotate: "180deg"}],
+    },
+    textMessageDark: {
+        fontSize: 10,
+        color: "#fff",
+    },
+    textMessageLight: {
+        fontSize: 10,
+        color: "#000",
     },
     blockMessageImageWrapper: {
         width: "15%",
@@ -124,6 +187,7 @@ export const Style = {
         backgroundColor: '#F5F5F5',
         borderRadius: 35,
         flexDirection: "row",
+        alignItems: "center",
         paddingLeft: 10,
         paddingRight: 10,
     },

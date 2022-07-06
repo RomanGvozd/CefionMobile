@@ -11,13 +11,13 @@ const GroupListItem = ({item, setGroupID, openChat}) => {
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
 
-    const { users, Delete } = content[language]
+    const { users, Leave } = content[language]
 
     const renderRight = (progress, dragX) => {
         return (
             <TouchableOpacity style={Style.buttonDelete}>
                 <Animated.Text style={Style.buttonText}>
-                    {Delete}
+                    {Leave}
                 </Animated.Text>
             </TouchableOpacity>
         );

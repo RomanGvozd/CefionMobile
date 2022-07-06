@@ -4,6 +4,7 @@ import { Text, View, Image, TouchableOpacity, Animated } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { GlobalStyle } from "../../../global.style";
 import { content } from "./ChatListItem.config";
+import moment from 'moment';
 
 import { Style } from "./ChatListItem.style";
 
@@ -37,6 +38,16 @@ const ChatListItem = ({item, openUser, setChatID}) => {
         );
     };
 
+    let lastMessage = null
+    let lastDate = null
+    let lastMessageTitle = null
+
+    if (item.message.length > 0) {
+        lastMessage = item.message.slice(-1)[0]
+        lastDate = lastMessage.date
+        lastMessageTitle = lastMessage.message
+    }
+
     return(
         <Swipeable 
             renderRightActions={renderRight}
@@ -50,17 +61,23 @@ const ChatListItem = ({item, openUser, setChatID}) => {
                 }}
                 activeOpacity={1}
             >
-                <View style={GlobalStyle.blockItemOneCenter}>
+                <View style={GlobalStyle.blockItemOne}>
                     <Image
-                        style={GlobalStyle.userImage}
+                        style={Style.userImage}
                         source={require("./image/user.png")}
                     />
-                    <View style={{marginLeft: 20}}>
-                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
-                            {item.title}
-                        </Text>
+                    <View style={{width: '75%'}}>
+                        <View style={Style.blockItemOneCenter}>
+                            <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                                    {item.title}
+                            </Text>
+                            <Text style={theme === "dark" ? Style.subTextDark : Style.subTextLight}>
+                                    {item.message.length > 0 && moment(lastDate).format('LT')}
+                            </Text>
+                        </View>
+                        <View style={{padding: 3}}></View>
                         <Text style={theme === "dark" ? GlobalStyle.subTextDark : GlobalStyle.subTtextDark}>
-                            {/* {item.tagName} */}
+                            {lastMessageTitle}
                         </Text>
                     </View>
                 </View>

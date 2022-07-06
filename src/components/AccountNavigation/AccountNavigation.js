@@ -6,6 +6,8 @@ import { CardStyleInterpolators, createStackNavigator, } from '@react-navigation
 import Account from './Account/Account'
 import Statistics from './Statistics/Statistics'
 import Setting from './Setting/Setting';
+import EditProfile from './Setting/EditProfile/EditProfile';
+
 import Followers from './Followers/Followers';
 import Following from './Following/Following';
 import AccountInfo from '../AccountInfo/AccountInfo';
@@ -55,6 +57,10 @@ const AccountNavigation = ({setLogin}) => {
         <Stack.Screen name="Setting">
           {props => <Setting {...props} setLogin={setLogin} />}
         </Stack.Screen>
+        <Stack.Screen name="EditProfile">
+          {props => <EditProfile {...props}/>}
+        </Stack.Screen>
+
         <Stack.Screen name="Followers">
           {props => <Followers {...props} setTypeUser={setTypeUser} setUserID={setUserID}/>}
         </Stack.Screen>

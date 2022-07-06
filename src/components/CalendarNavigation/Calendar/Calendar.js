@@ -11,6 +11,7 @@ import { content } from "./Calendar.config";
 import NavFooter from "../NavFooter/NavFooter";
 
 import VectorSvg from './image/Vector.svg'
+import SearchSvg from './image/Search.svg';
 
 const Calendar = ({navigation}) => {
 
@@ -48,11 +49,16 @@ const Calendar = ({navigation}) => {
                 <View style={{padding: 20,}}>
 
 
-                    <TextInput
-                        style={theme === "dark" ? Style.inputDark : Style.inputLight}
-                        placeholder={SearchForTask}
-                        placeholderTextColor={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}
-                    />
+                    <View style={theme === "dark" ? Style.inputWrapperDark : Style.inputWrapperLight}>
+                        <SearchSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
+                        <TextInput
+                            style={theme === "dark" ? Style.inputDark : Style.inputLight}
+                            // onChangeText={onChangeNumber}
+                            // value={number}
+                            placeholder={SearchForTask}
+                            placeholderTextColor={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}
+                        />
+                    </View>
                     <View style={Style.week}>
                         <View style={GlobalStyle.blockItemOne}>
                             <Text style={theme === "dark" ? GlobalStyle.titleDark : GlobalStyle.titleLight}>

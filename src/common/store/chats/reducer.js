@@ -20,19 +20,25 @@ const INITIAL_STATE = [
             {
                 userID: 1,
                 message: "Hello.",
+                date: Date.now(),
+
             },
             {
                 userID: 2,
                 message: "Hi.",
+                date: Date.now(),
+
             },
             {
                 userID: 1,
                 message: "How age you?",
+                date: Date.now(),
+
             },
         ],
     },
     {
-        id: 2,
+        id: 22,
         title: "First Chat",
         date: "2022-06-09 10:08",
         type: "public",
@@ -50,6 +56,8 @@ const INITIAL_STATE = [
             {
                 userID: 1,
                 message: "How age you?",
+                date: Date.now(),
+
             },
         ],
     },

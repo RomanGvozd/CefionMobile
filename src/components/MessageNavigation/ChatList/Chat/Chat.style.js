@@ -1,4 +1,33 @@
 export const Style = {
+    headerDark: {
+        width: "100%",
+        backgroundColor: "#1C1C1E",
+        paddingTop: 15,
+        paddingBottom: 15,
+        position: "relative",
+        borderBottomWidth: 1,
+        borderBottomColor: "#424246",
+        alingItems: "center",
+        position: "absolute",
+        left: 0,
+        top: 0,
+        zIndex: 100,
+    },
+    headerLight: {
+        width: "100%",
+        backgroundColor: "#fff",
+        paddingTop: 15,
+        paddingBottom: 15,
+        position: "relative",
+        borderBottomWidth: 1,
+        borderBottomColor: "#D6D6D6",
+        alingItems: "center",
+        position: "absolute",
+        left: 0,
+        top: 0,
+        zIndex: 100,
+        
+    },
     headerBlock: {
         width: "100%",
         flexDirection: 'row',
@@ -45,12 +74,33 @@ export const Style = {
         backgroundColor: "#fff",
         padding: 12,
         borderRadius: 15,
+        position: "relative",
     },
     blockMessageTextWrapperLight: {
         width: "80%",
         backgroundColor: "#1C1C1E",
         padding: 12,
         borderRadius: 15,
+        position: "relative",
+    },
+    messageVector: {
+        position: "absolute",
+        right: -8,
+        top: 15,
+    },
+    messageVectorReverce: {
+        position: "absolute",
+        left: -8,
+        top: 15,
+        transform: [{rotate: "180deg"}],
+    },
+    textMessageDark: {
+        fontSize: 10,
+        color: "#fff",
+    },
+    textMessageLight: {
+        fontSize: 10,
+        color: "#000",
     },
     blockMessageImageWrapper: {
         width: "15%",
@@ -66,11 +116,15 @@ export const Style = {
 
     //==============footer=================
 
-    footerDark: {
+    footerWrapper: {
         width: "100%",
         position: "absolute",
         left: 0,
         bottom: 0,
+    },
+
+    footerDark: {
+        width: "100%",
         paddingTop: 15,
         paddingBottom: 15,
         backgroundColor: '#1C1C1E',
@@ -83,9 +137,6 @@ export const Style = {
     },
     footerLight: {
         width: "100%",
-        position: "absolute",
-        left: 0,
-        bottom: 0,
         paddingTop: 15,
         paddingBottom: 15,
         backgroundColor: '#fff',
@@ -98,7 +149,6 @@ export const Style = {
     },
     footerImageWrapper: {
         width: "15%",
-        height: "100%",
         justifyContent: "center",
         alignItems: "center",
 
@@ -129,6 +179,7 @@ export const Style = {
     },
     footerInputDark: {
         width: "90%",
+        flexWrap: "wrap",
         paddingTop: 5,
         paddingBottom: 5,
         paddingLeft: 15,
@@ -137,6 +188,7 @@ export const Style = {
     },
     footerInputLight: {
         width: "90%",
+        flexWrap: "wrap",
         paddingTop: 5,
         paddingBottom: 5,
         paddingLeft: 15,
@@ -155,7 +207,6 @@ export const Style = {
     },
     footerButtonWrapper: {
         width: "15%",
-        height: "100%",
         justifyContent: "center",
         alignItems: "center",
     },
@@ -270,4 +321,15 @@ export const Style = {
         textAlign: "center",
         
     },
+
+    //==================modalSmile=====================
+
+    // modalSmileDark: {
+    //     width: "100%",
+    //     padding: 15,
+    //     flexDirection: 'row',
+    //     flexWrap: "wrap",
+    //     backgroundColor: '#1C1C1E',
+        
+    // },
 }

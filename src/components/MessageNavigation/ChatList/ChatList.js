@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { useSelector } from "react-redux";
 import { ScrollView, Text, View, Image, TouchableOpacity, TextInput, FlatList } from 'react-native';
 import ChatListItem from "./ChatListItem/ChatListItem";
@@ -8,18 +8,37 @@ import { Style } from "./ChatList.style";
 import { GlobalStyle } from "../../../global.style";
 
 import NavFooter from "../NavFooter/NavFooter";
+import SearchSvg from './image/Search.svg';
 
 const ChatList = ({setChatID, navigation}) => {
 
+    const user = useSelector((store) => store.user);
     const chats = useSelector((store) => store.chats);
     const theme = useSelector((store) => store.theme.theme);
     const language = useSelector((store) => store.language.language);
+
+    const findChat = () => {
+        const filteredChats = []
+
+        for (let i = 0; i < user.chats.length; i++) {
+            const chatID = user.chats[i];
+            for (let j = 0; j < chats.length; j++) {
+                if (chatID == chats[j].id) {
+                    filteredChats.push(chats[j])
+                }
+            } 
+        }
+
+        return filteredChats
+    }
+
+    let filteredChats = findChat()
 
     const {
         Edit,
         Message, 
         New,
-        SearchForCalendar,
+        Search,
         General,
         Private,
         Description,
@@ -61,13 +80,16 @@ const ChatList = ({setChatID, navigation}) => {
             <View style={{padding: 20}}>
 
             
-                <TextInput
-                    style={theme === "dark" ? GlobalStyle.inputDark : GlobalStyle.inputLight}
-                    // onChangeText={onChangeNumber}
-                    // value={number}
-                    placeholder={SearchForCalendar}
-                    placeholderTextColor={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}
-                />
+                <View style={theme === "dark" ? Style.inputWrapperDark : Style.inputWrapperLight}>
+                    <SearchSvg fill={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}/>
+                    <TextInput
+                        style={theme === "dark" ? Style.inputDark : Style.inputLight}
+                        // onChangeText={onChangeNumber}
+                        // value={number}
+                        placeholder={Search}
+                        placeholderTextColor={theme === "dark" ? "rgba(255, 255, 255, 0.5)" : "rgba(0, 0, 0, 0.5)"}
+                    />
+                </View>
                 <View style={Style.buttonWrapper}>
                     <TouchableOpacity 
                         style={typeChat === "general" ? Style.buttonActive : Style.button}
@@ -94,7 +116,7 @@ const ChatList = ({setChatID, navigation}) => {
                         {Description}
                     </Text>
                 </View>
-                {chats.map((item)=>(
+                {filteredChats.map((item)=>(
                     <ChatListItem item={item} key={item.id} openUser={openUser} setChatID={setChatID}/>
                 ))}
 

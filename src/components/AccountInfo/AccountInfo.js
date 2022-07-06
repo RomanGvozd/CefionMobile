@@ -10,7 +10,8 @@ import BackArrowSvg from '../../Image/BackArrow.svg';
 import FollowersSvg from './image/Followers.svg';
 import WalletSvg from './image/Wallet.svg';
 
-import { addChat } from '../../common/store/chats/actions'
+import { addChat } from '../../common/store/chats/actions';
+import { userAddChat } from "../../common/store/user/actions";
 
 const AccountInfo = ({ navigation, typeUser, userID, setChatID }) => {
 
@@ -69,6 +70,7 @@ const AccountInfo = ({ navigation, typeUser, userID, setChatID }) => {
             "public", 
             [],
         ));
+        dispatch(userAddChat(chatID))
         setChatID(chatID)
         navigation.navigate({ name: 'Chat' })
     }

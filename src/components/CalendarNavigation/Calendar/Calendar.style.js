@@ -29,27 +29,43 @@ export const Style = {
 
     },
 
-    //===============input==================
+    //==================input==============
 
-    inputDark: {
-        width: "100%",
-        padding: 14,
+    inputWrapperDark: {
         backgroundColor: "#1C1C1E",
-        borderRadius: 15,
         borderWidth: 1,
         borderColor: "#424246",
+        borderRadius: 15,
+        paddingLeft: 15,
+        paddingRight: 15,
+        color: "#fff",
+        flexDirection: 'row',
+        alignItems: 'center',
         marginBottom: 20,
 
     },
-    inputLight: {
-        width: "100%",
-        padding: 14,
+    inputWrapperLight: {
         backgroundColor: "#fff",
-        borderRadius: 15,
         borderWidth: 1,
-        borderColor: "#d6d6d6",
+        borderColor: "#D6D6D6",
+        borderRadius: 15,
+        paddingLeft: 15,
+        paddingRight: 15,
+        color: "#000",
+        flexDirection: 'row',
+        alignItems: 'center',
         marginBottom: 20,
 
+    },
+    inputDark: {
+        width: "80%",
+        marginLeft: 10,
+        color: "#fff",
+    },
+    inputLight: {
+        width: "80%",
+        marginLeft: 10,
+        color: "#000",
     },
 
     //==============week====================

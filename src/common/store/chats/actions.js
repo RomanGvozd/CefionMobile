@@ -17,10 +17,10 @@ export function addChat(id, title, users, date, type, message) {
   };
 }
 
-export function editItem(id, message) {
+export function editItem(id, message,) {
   return {
     type: ACTION_EDIT_CHAT,
-    payload: { id, message }
+    payload: { id, message, }
   };
 }
 

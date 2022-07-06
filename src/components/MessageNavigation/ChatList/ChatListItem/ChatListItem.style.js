@@ -1,6 +1,6 @@
 export const Style = {
     buttonDelete: {
-        height: 75,
+        height: 80,
         borderRadius: 15,
         paddingLeft: 15,
         paddingRight: 15,
@@ -12,7 +12,7 @@ export const Style = {
 
     },
     buttonUnread: {
-        height: 75,
+        height: 80,
         borderRadius: 15,
         paddingLeft: 15,
         paddingRight: 15,
@@ -27,5 +27,25 @@ export const Style = {
         color: "#fff",
         fontSize: 13,
 
+    },
+    userImage: {
+        width: '20%',
+        height: 65,
+    },
+    blockItemOneCenter: {
+        width: "100%",
+        height: "auto",
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: 'center',
+    },
+    subTextDark: {
+        color: "rgba(255, 255, 255, 0.5)",
+        fontSize: 13,
+
+    },
+    subTextLight: {
+        color: "rgba(0, 0, 0, 0.5)",
+        fontSize: 13,
     },
 }

@@ -45,19 +45,31 @@ const INITIAL_STATE = [
         message: [
             {
                 userID: 1,
+                name: "Arnold",
                 message: "Hello.",
+                date: "",
+
             },
             {
                 userID: 2,
+                name: "Ronald",
                 message: "Hi.",
+                date: "",
+
             },
             {
                 userID: 1,
+                name: "Calvin",
                 message: "How age you?",
+                date: "",
+
             },
             {
                 userID: 3,
+                name: "Arnold",
                 message: "Normal",
+                date: "",
+
             },
         ],
     },
@@ -93,11 +105,16 @@ const INITIAL_STATE = [
         message: [
             {
                 userID: 1,
+                name: "Calvin",
                 message: "Hello.",
+                date: "",
             },
             {
                 userID: 2,
+                name: "Cody",
                 message: "Hi.",
+                date: "",
+
             },
 
         ],

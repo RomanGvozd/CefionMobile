@@ -23,7 +23,6 @@ export const GlobalStyle = {
         borderBottomWidth: 1,
         borderBottomColor: "#424246",
         alingItems: "center",
-        
 
     },
     headerLight: {
@@ -99,6 +98,13 @@ export const GlobalStyle = {
         width: "100%",
         height: "auto",
         flexDirection: 'row',
+        alignItems: 'center',
+    },
+    blockItemOneEnd: {
+        width: "100%",
+        height: "auto",
+        flexDirection: 'row',
+        justifyContent: "flex-end",
         alignItems: 'center',
     },
 

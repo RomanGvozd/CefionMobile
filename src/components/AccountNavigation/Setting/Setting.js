@@ -68,16 +68,29 @@ const Setting = ({setLogin, navigation }) => {
         <ScrollView style={theme === "dark" ? GlobalStyle.mainDark : GlobalStyle.mainLight}>
 
 
-            <TouchableOpacity style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight} onPress={() => navigation.navigate({ name: 'Account' })}>
-                <View 
-                    style={GlobalStyle.imageWrapper}
-                >
-                    <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
+        <View style={theme === "dark" ? GlobalStyle.headerDark : GlobalStyle.headerLight}>
+                <View style={Style.headerBlock}>
+                    <TouchableOpacity 
+                        style={Style.headerBlockLeft}
+                        onPress={() => navigation.navigate({ name: 'Account' })}
+                    >
+                        <BackArrowSvg fill={theme === "dark" ? "#fff" : "#000"}/>
+                    </TouchableOpacity>
+                    <View style={Style.titleWrapper}>
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            {Setting}
+                        </Text>
+                    </View>
+                    <TouchableOpacity 
+                        style={Style.headerBlockRight}
+                        onPress={() => navigation.navigate({ name: 'EditProfile' })}
+                    >
+                        <Text style={theme === "dark" ? GlobalStyle.textDark : GlobalStyle.textLight}>
+                            Edit
+                        </Text>
+                    </TouchableOpacity>
                 </View>
-                <Text style={theme === "dark" ? GlobalStyle.headerTitleDark : GlobalStyle.headerTitleLight}>
-                    {Setting}
-                </Text>
-            </TouchableOpacity>
+            </View>
 
 
             <View style={{padding: 20}}>
