@@ -23,4 +23,11 @@ export const Style = {
         justifyContent: "flex-end",
         alignItems: 'center',
     },
+
+    //===================image=================
+
+    imageUser: {
+        width: 100,
+        height: 100,
+    },
 }
